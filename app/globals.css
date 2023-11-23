@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+ 
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+ 
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+ 
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+ 
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+.lgo {
+  background-image: url('/lgo.jpg');
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Or 'contain', depending on your need */
+}
+.radioul {
+  background: radial-gradient(circle, #1a1a1a, #0a0a0a);
+}
+/* Looper styles */
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.looper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(transparent,
+          black 20%,
+          black 80%,
+          transparent 100%);
+      -webkit-mask-image: linear-gradient( to right,transparent,
+          black 20%,
+          black 80%,
+          transparent 100%);
+          
+    
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.looper__innerList[data-animate="true"] .looper__listInstance {
+  animation: slideAnim linear infinite;   
+}
+
+.looper__listInstance {
+  display: flex;
+  width: max-content;
+
+  animation: none;
+}
+
+.description {
+  margin-bottom: 16px;  
+  text-align: center;
+}
+.contentBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.contentBlock--one {  
+  width: 200px;
+  
+
+}
+.contentBlock--one:last-of-type {
+  color: var(--green);
+  margin-right: 36px;
+}
+.contentBlock--two {    
+  color: var(--green);  
+  opacity: 0.7;
+
+}
+.fade-effect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px; /* Adjust the width of the fade effect */
+  background: linear-gradient(to left, #ffffff, transparent);
+  
+}
