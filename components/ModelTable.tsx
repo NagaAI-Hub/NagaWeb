@@ -41,16 +41,16 @@ const ModelTable: FC<Response> = ({ data }) => {
             <TableCell>{item.owned_by ? item.owned_by.toUpperCase() : 'N/A'}</TableCell>
             <TableCell>{item.limit?.toUpperCase()}</TableCell>
             <TableCell>
-            {item.unit_costs ? 
-    <div className="flex flex-col">
-      <span>Input: {parseFloat(item.unit_costs.input).toFixed(10)}</span>
-      <span>Output: {parseFloat(item.unit_costs.output).toFixed(10)}</span>
-    </div> 
-    : 'N/A'}
+              {item.unit_costs ?
+                <div className="flex flex-col">
+                  <span>Input: {parseFloat(item.unit_costs.input).toFixed(10)}</span>
+                  <span>Output: {parseFloat(item.unit_costs.output).toFixed(10)}</span>
+                </div>
+                : 'N/A'}
             </TableCell>
             <TableCell className="text-right">
-              {item.allowed_for && item.allowed_for.length > 0 ? 
-                (item.allowed_for.includes('free') ? <Check color="green"/> : <X color="red"/>) 
+              {item.allowed_for && item.allowed_for.length > 0 ?
+                (item.allowed_for.includes('free') ? <Check color="green" /> : <X color="red" />)
                 : 'N/A'}
             </TableCell>
           </TableRow>
