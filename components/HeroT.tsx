@@ -9,10 +9,14 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     let phi = 0;
     if (canvasRef.current) {
+      let width = 0;
+      const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth)
+      window.addEventListener('resize', onResize)
+      onResize()
       const globe = createGlobe(canvasRef.current, {
         devicePixelRatio: 2,
-        width: 450 * 2,
-        height: 450 * 2,
+        width: width * 2,
+        height: width * 2 * 0.4,
         phi: 0,
         theta: 0,
         dark: 1,
@@ -32,6 +36,8 @@ const HeroSection: React.FC = () => {
         onRender: (state) => {
           state.phi = phi;
           phi += 0.01;
+          state.width = width * 2
+          state.height = width * 2 * 0.6
         }
       });
 
@@ -41,15 +47,31 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="flex flex-col text-white mt-4" style={{ backgroundImage: 'url("/patternpad.svg")' }}>
-      <div className="text-center max-w-2xl mx-auto">
+      <div className="text-center mx-auto sm:max-w-1xl lg:max-w-2xl">
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 py-4">
           Your Gateway to Cutting-Edge AI Technologies.
         </h1>
-        <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
+        <p className="mx-auto text-zinc-200 dark:text-zinc-100 md:text-xl max-w-prose">
           Explore the frontier of artificial intelligence with Naga. Offering stable and reliable API access to the latest in AI technology.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <canvas ref={canvasRef} style={{ width: 450, height: 450, aspectRatio: 1 }} />
+        <div style={{
+    width: '100%',
+    aspectRatio: 1/.6,
+    margin: 'auto',
+    position: 'relative',
+  }}>
+           <canvas
+      ref={canvasRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        contain: 'layout paint size',
+        opacity: 1,
+        transition: 'opacity 1s ease',
+      }}
+    />
+        </div>
         </div>
       </div>
       <div className="text-white">
