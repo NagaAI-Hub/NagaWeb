@@ -28,7 +28,7 @@ const Nav: React.FC<NavProps> = ({ title, version, discord }) => {
       <Link className="text-zinc-500 dark:text-zinc-400" href="/dashboard">
         Dashboard
       </Link>
-      <Link className="text-zinc-500 dark:text-zinc-400" href=''>
+      <Link className="text-zinc-500 dark:text-zinc-400" href='https://chat.naga.ac/'>
         LibreChat
       </Link>
       <Link className="text-zinc-500 dark:text-zinc-400" href={discord}>
