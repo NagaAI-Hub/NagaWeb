@@ -13,7 +13,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_WEB_URL,
-    
+    siteName: Core.name,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_WEB_URL}/logos/naga.png`,
+        width: 600,
+        height: 600,
+      }
+    ]
+
   }
 }
 
@@ -24,19 +32,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <head />
-    <body>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <Nav title={Core.name} version={Core.version} discord={Core.discord}/>
-        
-        {children}
-      </ThemeProvider>
-    </body>
-  </html>
+      <head />
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Nav title={Core.name} version={Core.version} discord={Core.discord} />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }
