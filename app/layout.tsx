@@ -21,7 +21,6 @@ export const metadata: Metadata = {
         height: 600,
       }
     ]
-
   }
 }
 
