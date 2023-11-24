@@ -18,7 +18,7 @@ const Nav: React.FC<NavProps> = ({ title, version, discord }) => {
     <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6">
     <nav className="flex-col hidden gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
       <Link className="flex items-center gap-2 text-lg font-semibold md:text-base" href="#">
-        <Brain  className="w-6 h-6"/>
+        <Brain  className="w-8 h-8"/>
         <span className="sr-only">{title}</span>
 
       </Link>
