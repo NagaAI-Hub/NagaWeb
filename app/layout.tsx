@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: Core.name,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_WEB_URL}/logos/naga.png`,
+        url: `${process.env.NEXT_PUBLIC_WEB_URL}logos/naga.png`,
         width: 600,
         height: 600,
       }
