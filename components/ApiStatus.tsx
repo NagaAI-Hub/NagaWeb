@@ -1,3 +1,6 @@
+//DEPRECATED
+// But will stay here. It's a good example of how to use the card component
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
