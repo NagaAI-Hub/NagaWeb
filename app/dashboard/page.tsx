@@ -1,12 +1,12 @@
 
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
-import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
+import { TableHead, TableRow, TableHeader, Table } from "@/components/ui/table"
 import ModelTable from "@/components/ModelTable"
 
 async function getItem() {
   // The `fetch` function is automatically memoized and the result
   // is cached
-  const res = await fetch('https://api.naga.ac/v1/models')
+  const res = await fetch('https://api.naga.ac/v1/models', {cache: 'force-cache'})
   return res.json()
 }
 interface Item {
@@ -32,16 +32,7 @@ export default async function Dashboard() {
               {/* <p className="text-xs text-zinc-500 dark:text-zinc-400">+5 from last month</p> */}
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium">Api Response </CardTitle>
-              <IconAPI className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold"> 200ms </div>
-              {/* <p className="text-xs text-zinc-500 dark:text-zinc-400"> -5ms from last hour </p> */}
-            </CardContent>
-          </Card>
+        
          
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -74,7 +65,7 @@ export default async function Dashboard() {
   )
 }
 
-function IconAPI(props) {
+function IconAPI(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
