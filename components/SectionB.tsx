@@ -13,7 +13,7 @@ type IconProps = React.ComponentProps<'svg'> & { size?: number };
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => {
   const IconComponent = Icons[icon] as React.FC<IconProps>;
   return (
-    <Card className="border border-gray-700 p-6 text-center hover:border-blue-500 transition-colors delay-50">
+    <Card className="p-6 text-center hover:border-blue-500 transition-colors delay-50">
       <div className="flex justify-center">
         {IconComponent ? <IconComponent size={24} className="mb-4" /> : null}
       </div>

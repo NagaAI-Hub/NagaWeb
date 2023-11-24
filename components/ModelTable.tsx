@@ -48,7 +48,7 @@ const ModelTable: FC<Response> = ({ data }) => {
                 </div>
                 : 'N/A'}
             </TableCell>
-            <TableCell className="text-right">
+            <TableCell>
               {item.allowed_for && item.allowed_for.length > 0 ?
                 (item.allowed_for.includes('free') ? <Check color="green" /> : <X color="red" />)
                 : 'N/A'}

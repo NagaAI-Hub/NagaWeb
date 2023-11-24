@@ -6,7 +6,7 @@ import ModelTable from "@/components/ModelTable"
 async function getItem() {
   // The `fetch` function is automatically memoized and the result
   // is cached
-  const res = await fetch('https://api.naga.ac/v1/models', {cache: 'force-cache'})
+  const res = await fetch('https://api.naga.ac/v1/models', { cache: 'force-cache' })
   return res.json()
 }
 interface Item {
@@ -14,53 +14,50 @@ interface Item {
   // define other properties of item here
 }
 export default async function Dashboard() {
- const res = await getItem()
- const modelCount = res.data.filter((item: Item) => item.object === 'model').length;
+  const res = await getItem()
+  const modelCount = res.data.filter((item: Item) => item.object === 'model').length;
   return (
     <>
 
-<div key="1" className="flex flex-col w-full min-h-screen">
-      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium">Total Models Supported</CardTitle>
-              <IconDatabase className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{modelCount}</div>
-              {/* <p className="text-xs text-zinc-500 dark:text-zinc-400">+5 from last month</p> */}
-            </CardContent>
-          </Card>
-        
-         
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          
-          <div>
+      <div key="1" className="flex flex-col w-full min-h-screen">
+        <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <Card>
-            <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">ID</TableHead>
-          <TableHead>Owned By</TableHead>
-          <TableHead>Limit</TableHead>
-          <TableHead>Unit Costs</TableHead>
-          <TableHead className="text-right">Free?</TableHead>
-        </TableRow>
-      </TableHeader>
-      <ModelTable data={res.data} object={res.object} />
-      </Table>
+              <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                <CardTitle className="text-sm font-medium">Total Models Supported</CardTitle>
+                <IconDatabase className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{modelCount}</div>
+                {/* <p className="text-xs text-zinc-500 dark:text-zinc-400">+5 from last month</p> */}
+              </CardContent>
             </Card>
           </div>
-          <div>
-            <Card className="w-full h-full">
-              <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />
-            </Card>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
+            <div>
+              <Card>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[100px]">ID</TableHead>
+                      <TableHead>Owned By</TableHead>
+                      <TableHead>Limit</TableHead>
+                      <TableHead>Unit Costs</TableHead>
+                      <TableHead>Free?</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <ModelTable data={res.data} object={res.object} />
+                </Table>
+              </Card>
+            </div>
+            <div>
+              <Card className="w-full h-full">
+                <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />
+              </Card>
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
     </>
   )
 }
