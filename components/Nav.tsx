@@ -1,7 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/AtqRGYp8RDf
- */
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { LogIn, Brain } from "lucide-react"

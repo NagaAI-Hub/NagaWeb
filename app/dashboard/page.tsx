@@ -11,7 +11,6 @@ async function getItem() {
 }
 interface Item {
   object: string;
-  // define other properties of item here
 }
 export default async function Dashboard() {
   const res = await getItem()
