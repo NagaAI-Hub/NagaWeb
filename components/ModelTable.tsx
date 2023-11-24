@@ -37,7 +37,7 @@ const ModelTable: FC<Response> = ({ data }) => {
 
         return (
           <TableRow key={item.id}>
-            <TableCell>{item.id.toUpperCase()}</TableCell>
+            <TableCell className="font-bold">{item.id.toUpperCase()}</TableCell>
             <TableCell>{item.owned_by ? item.owned_by.toUpperCase() : 'N/A'}</TableCell>
             <TableCell>{item.limit?.toUpperCase()}</TableCell>
             <TableCell>
