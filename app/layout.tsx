@@ -30,9 +30,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
+      <StoreProvider>
       <body>
         <ThemeProvider
           attribute="class"
@@ -40,11 +42,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StoreProvider>
+          
           {children}
-          </StoreProvider>
         </ThemeProvider>
       </body>
+          </StoreProvider>
     </html>
   )
 }
