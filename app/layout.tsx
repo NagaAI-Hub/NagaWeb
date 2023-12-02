@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Nav from '@/components/Nav'
 const inter = Inter({ subsets: ['latin'] })
 import Core from '@/conf/cfg'
+import StoreProvider from './StoreProvider'
 export const metadata: Metadata = {
   title: Core.title,
   description: Core.description,
@@ -29,9 +30,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
+      <StoreProvider>
       <body>
         <ThemeProvider
           attribute="class"
@@ -39,10 +42,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav title={Core.name} version={Core.version} discord={Core.discord} />
+          
           {children}
         </ThemeProvider>
       </body>
+          </StoreProvider>
     </html>
   )
 }
