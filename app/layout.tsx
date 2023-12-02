@@ -39,7 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav title={Core.name} version={Core.version} discord={Core.discord} />
+          
           {children}
         </ThemeProvider>
       </body>
