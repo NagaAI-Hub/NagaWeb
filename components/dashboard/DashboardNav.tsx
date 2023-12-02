@@ -22,7 +22,7 @@ const DashboardNav = () => {
   };
 
   return (
-<nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 h-[calc(100%-4rem)] overflow-auto">
+<nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
   <div className="flex flex-col gap-2 h-full justify-between">
     <div>
       <div className="flex items-center h-16 px-4 border-b dark:border-neutral-800 justify-between">

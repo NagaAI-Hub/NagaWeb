@@ -8,7 +8,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="grid h-screen grid-cols-[260px_1fr]">
+    <div className="grid h-screen grid-cols-[260px_1fr] overflow-auto">
       <DashboardNav />
       <div className="flex flex-col h-full">
         <header className="flex items-center h-16 px-4 border-b dark:border-neutral-00">
