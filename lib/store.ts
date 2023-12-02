@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import screenSizeReducer from './features/screenSize/screenSizeSlice';
 import menuOpenReducer from './features/isMenuOpen/isMenuOpenSlice';
 import modelsSliceReducer from './features/models/modelsSlice';
+import limitsSliceReducer from './features/limits/limitsSlice';
 export const makeStore = () => {
 
 return configureStore({
@@ -9,6 +10,7 @@ return configureStore({
             screenSize: screenSizeReducer,
             isMenuOpen: menuOpenReducer,
             models: modelsSliceReducer,
+            limits: limitsSliceReducer
         }
     })
 }

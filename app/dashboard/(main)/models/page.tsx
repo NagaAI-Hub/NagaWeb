@@ -6,7 +6,7 @@ import { Table } from "@/components/ui/table"
 import { useFetchModels } from "@/lib/hooks/useFetchModels"
 const Models = () => {
   const {status, error, models} = useFetchModels();
-  console.log(models.models)
+  if (error) return <h1>error</h1>
     return (
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full">
          <Card>
