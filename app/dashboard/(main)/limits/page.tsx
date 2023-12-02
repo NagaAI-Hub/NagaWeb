@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import LimitTable from "@/components/LimitTable"
 import { useFetchLimits } from "@/lib/hooks/useFetchLimits"
 import { Card } from '@/components/ui/card';
+import ErrorLog from '@/components/Err';
 
 const LimitPage = () => { 
     const { status, error, limits } = useFetchLimits();
-
+    if (error || !limits.limits) return <ErrorLog errorMessage={'Error loading limits, Report this incident with console print.'} />
     // Animation variants
     const variants = {
         hidden: { opacity: 0 },

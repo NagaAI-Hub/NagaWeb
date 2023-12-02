@@ -1,14 +1,13 @@
 "use client"
+import ErrorLog from "@/components/Err"
 import ModelTable from "@/components/ModelTable"
 import { Card } from "@/components/ui/card"
-import { TableHeader, TableRow, TableHead } from "@/components/ui/table"
-import { Table } from "@/components/ui/table"
 import { useFetchModels } from "@/lib/hooks/useFetchModels"
 import { motion } from 'framer-motion';
 
 const Models = () => {
   const {status, error, models} = useFetchModels();
-  if (error) return <h1>error</h1>
+  if (error || !models.models) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
 
   const variants = {
     hidden: { opacity: 0 },
@@ -22,10 +21,10 @@ const Models = () => {
       initial="hidden"
       animate="visible"
     >
-   
+          
           {/* @ts-ignore */}
           <ModelTable data={models.models} object={models.models}/>
-        
+
       <div className="h-full overflow-auto">
         <Card className="w-full h-full">
           <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />

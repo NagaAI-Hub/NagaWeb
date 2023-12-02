@@ -4,6 +4,8 @@ import { Brain, Home, Settings2, Pen, MessageSquare, SmilePlus } from "lucide-re
 import Link from "next/link"
 import { Badge } from "../ui/badge"
 import { useFetchModels } from "@/lib/hooks/useFetchModels"
+import ErrorLog from "../Err"
+
 
 const navItems = [
   { href: '/dashboard/models', icon: Home, label: 'Models' },
@@ -16,8 +18,9 @@ const navItems = [
 
 const DashboardNav = () => {
   const { status, error, models } = useFetchModels();
-
+  if (error) return <ErrorLog errorMessage={error} />
   const getBadgeText = () => {
+    if (!models.models) return "Error"
     return status === "loading" || status === 'idle' ? "Loading Models" : models.models.length;
   };
 

@@ -1,7 +1,6 @@
 
 import { Card } from "@/components/ui/card"
 import { TableHead, TableRow, TableHeader, Table } from "@/components/ui/table"
-import ModelTable from "@/components/ModelTable"
 
 export default async function Dashboard() {
  
