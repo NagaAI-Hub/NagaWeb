@@ -1,6 +1,7 @@
-import { TableRow, TableBody, TableCell } from "./ui/table"
+import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from "./ui/table"
 import { FC } from 'react';
 import { Check, X } from "lucide-react";
+import { Card } from "./ui/card";
 
 interface UnitCosts {
   input?: string;
@@ -27,6 +28,17 @@ interface ModelTableProps {
 
 const ModelTable: FC<ModelTableProps> = ({ data }) => {
   return (
+    <Card className="h-full overflow-auto">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">ID</TableHead>
+              <TableHead>Owned By</TableHead>
+              <TableHead>Limit</TableHead>
+              <TableHead>Unit Costs</TableHead>
+              <TableHead>Free?</TableHead>
+            </TableRow>
+          </TableHeader>
     <TableBody>
       {data.map((item) => {
         if (item.proxy_to) {
@@ -55,6 +67,8 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
         );
       })}
     </TableBody>
+    </Table>
+    </Card>
   )
 }
 
