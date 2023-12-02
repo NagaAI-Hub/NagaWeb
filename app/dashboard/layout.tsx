@@ -1,11 +1,6 @@
 
-
-import '@/app/globals.css'
 import { Input } from '@/components/ui/input'
 import DashboardNav from '@/components/dashboard/DashboardNav'
-
-import StoreProvider from '../StoreProvider'
-
 export default function DashboardLayout({
   children,
 }: {
@@ -13,8 +8,8 @@ export default function DashboardLayout({
 }) {
 
   return (
-    <StoreProvider>
-      <div key="1" className="grid h-screen grid-cols-[260px_1fr] ">
+ 
+      <div className="grid h-screen grid-cols-[260px_1fr] ">
         <DashboardNav />
         <div className="flex flex-col">
           <header className="flex items-center h-16 px-4 border-b dark:border-neutral-00">
@@ -46,7 +41,7 @@ export default function DashboardLayout({
           </main>
         </div>
       </div>
-    </StoreProvider>
+ 
   )
 }
 function IconDashboard(props: React.SVGProps<SVGSVGElement>) {

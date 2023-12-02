@@ -3,18 +3,8 @@ import { Card } from "@/components/ui/card"
 import { TableHead, TableRow, TableHeader, Table } from "@/components/ui/table"
 import ModelTable from "@/components/ModelTable"
 
-
-async function getItem() {
-  // The `fetch` function is automatically memoized and the result
-  // is cached
-  const res = await fetch('https://api.naga.ac/v1/models', { cache: 'force-cache' })
-  return res.json()
-}
-interface Item {
-  object: string;
-}
 export default async function Dashboard() {
-  const res = await getItem()
+ 
   return (
     <>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
@@ -30,7 +20,7 @@ export default async function Dashboard() {
                       <TableHead>Free?</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <ModelTable data={res.data} object={res.object} />
+                  
                 </Table>
               </Card>
             </div>
