@@ -110,7 +110,7 @@ export default function DashboardLayout({
       </div>
     )
     }
-function IconDashboard(props) {
+function IconDashboard(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -133,7 +133,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconPackage2(props) {
+  function IconPackage2(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -155,7 +155,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconProjects(props) {
+  function IconProjects(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -180,7 +180,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconReports(props) {
+  function IconReports(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -203,7 +203,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconSearch(props) {
+  function IconSearch(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -224,7 +224,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconTasks(props) {
+  function IconTasks(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -244,7 +244,7 @@ function IconDashboard(props) {
   }
   
   
-  function IconTeam(props) {
+  function IconTeam(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}

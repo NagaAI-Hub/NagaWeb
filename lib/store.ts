@@ -1,9 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit';
-
+import screenSizeReducer from './features/screenSize/screenSizeSlice';
+import menuOpenReducer from './features/isMenuOpen/isMenuOpenSlice';
 export const makeStore = () => {
 
 return configureStore({
-        reducer: {}
+        reducer: {
+            screenSize: screenSizeReducer,
+            isMenuOpen: menuOpenReducer,
+        }
     })
 }
 
