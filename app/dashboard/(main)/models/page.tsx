@@ -1,5 +1,6 @@
 "use client"
 import ErrorLog from "@/components/Err"
+import Loading from "@/components/Loader";
 import ModelTable from "@/components/ModelTable"
 import { Card } from "@/components/ui/card"
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
@@ -7,9 +8,8 @@ import { motion } from 'framer-motion';
 
 const Models = () => {
   const { data: models = [], isLoading, isError} = useFetchModelsQuery()
-  
   if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
-  if(isLoading) return <div>Loading...</div>
+  if(isLoading) return <Loading />
   
   const variants = {
     hidden: { opacity: 0 },
@@ -23,6 +23,7 @@ const Models = () => {
       initial="hidden"
       animate="visible"
     >
+      
       <ModelTable data={models}/>
       <div className="h-full overflow-auto">
         <Card className="w-full h-full">

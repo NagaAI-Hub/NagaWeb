@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
 import screenSizeReducer from './features/screenSize/screenSizeSlice';
 import menuOpenReducer from './features/isMenuOpen/isMenuOpenSlice';
-import limitsSliceReducer from './features/limits/limitsSlice';
 import { modelsApi } from './api/modelsApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { limitsApi } from './api/limitsApi';
 
 export const makeStore = () => {
   const store = configureStore({
@@ -11,10 +11,12 @@ export const makeStore = () => {
       screenSize: screenSizeReducer,
       isMenuOpen: menuOpenReducer,
       [modelsApi.reducerPath]: modelsApi.reducer,
-      limits: limitsSliceReducer
+      [limitsApi.reducerPath]: limitsApi.reducer,
+      
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(modelsApi.middleware),
+      getDefaultMiddleware().concat(modelsApi.middleware, limitsApi.middleware),
+
   });
 
   // Set up listeners for RTK Query

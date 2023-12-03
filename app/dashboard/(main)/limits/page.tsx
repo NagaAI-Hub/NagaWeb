@@ -1,13 +1,15 @@
 "use client"
 import { motion } from 'framer-motion';
 import LimitTable from "@/components/LimitTable"
-import { useFetchLimits } from "@/lib/hooks/useFetchLimits"
+import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { Card } from '@/components/ui/card';
 import ErrorLog from '@/components/Err';
-
+import { useFetchLimits } from '@/lib/hooks/useFetchLimits';
+import Loading from '@/components/Loader';
 const LimitPage = () => { 
-    const { status, error, limits } = useFetchLimits();
-    if (error || !limits.limits) return <ErrorLog errorMessage={'Error loading limits, Report this incident with console print.'} />
+    const { data: limits = [], isLoading, isError} = useFetchLimitsQuery()
+    if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
+  if(isLoading) return <Loading />
     // Animation variants
     const variants = {
         hidden: { opacity: 0 },
@@ -23,7 +25,7 @@ const LimitPage = () => {
             transition={{ duration: 0.5 }}
         >
             {/* @ts-ignore */}
-            <LimitTable data={limits.limits}/>
+            <LimitTable data={limits.data}/>
             <div className="h-full overflow-auto">
                 <Card className="w-full h-full">
                     <iframe src='https://api.naga.ac/v1/limits' className='w-full h-full' />

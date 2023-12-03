@@ -4,31 +4,10 @@ import { Check, X } from "lucide-react";
 import { Card } from "./ui/card";
 import ErrorLog from "./Err";
 
-interface UnitCosts {
-  input?: string;
-  output?: string;
-  image?: number;
-}
 
-interface Model {
-  id: string;
-  object: string;
-  owned_by?: string;
-  limit?: string;
-  unit_costs?: UnitCosts;
-  allowed_for?: string[];
-  max_images?: number;
-  multiple_of?: number;
-  unit_cost?: string;
-  proxy_to?: string;
-}
 
-interface ModelTableProps {
-  data: Model[];
-}
-
-const ModelTable: FC<ModelTableProps> = ({ data }) => {
-  if (!data) return <ErrorLog errorMessage="Missing Data at ModelTable.tsx" />
+const ModelTable: FC<any> = ({ data }) => {
+  if (!data) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
   return (
     <Card className="h-full overflow-auto">
         <Table>
@@ -42,7 +21,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             </TableRow>
           </TableHeader>
     <TableBody>
-      {data.data.map((item) => {
+      {data.data.map((item: any) => {
         if (item.proxy_to) {
           return null; // skip rendering this item
         }

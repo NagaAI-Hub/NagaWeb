@@ -19,10 +19,6 @@ interface Model {
   unit_cost?: string;
 }
 
-interface Response {
-  data: Model[];
-  object: string;
-}
 export const modelsApi = createApi({
   reducerPath: 'modelsApi',
   baseQuery: fetchBaseQuery({ baseUrl: Endpoints.NAGA_BASE_URL }),
