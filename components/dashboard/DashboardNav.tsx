@@ -10,7 +10,7 @@ import Loading from "../Loader"
 
 const navItems = [
   { href: '/dashboard/models', icon: Home, label: 'Models' },
-  { href: '/dashboard/limits', icon: Settings2, label: 'Limits' },
+  { href: '/dashboard/limits', icon: Settings2, label: 'Limits', badge: 'Free' },
   { href: '#', icon: Pen, label: 'Playground', badge: 'Soon™' },
   { href: 'https://chat.naga.ac/', icon: MessageSquare, label: 'LibreChat', },
   { href: 'https://discord.naga.ac/', icon: SmilePlus, label: 'Discord', },
