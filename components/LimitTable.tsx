@@ -5,19 +5,8 @@ import { Card } from './ui/card';
 
 type LimitItem = [number, string];
 
-interface LimitData {
-  id: string;
-  object: string;
-  free: LimitItem[];
-  paid: LimitItem[];
-}
 
-interface ApiResponse {
-  data: LimitData[];
-  object: string;
-}
-
-const LimitTable: FC<ApiResponse> = ({ data }) => {
+const LimitTable = ({ data }: any) => {
   const formatLimit = (limits: LimitItem[], isPaid: boolean = false) => {
     return (
       <>
@@ -49,7 +38,7 @@ const LimitTable: FC<ApiResponse> = ({ data }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((item) => (
+          {data.map((item: any) => (
             <TableRow key={item.id}>
               <TableCell className="font-bold">{item.id.toUpperCase()}</TableCell>
               <TableCell>{formatLimit(item.free)}</TableCell>

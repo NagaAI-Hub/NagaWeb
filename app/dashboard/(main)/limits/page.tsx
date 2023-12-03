@@ -1,43 +1,24 @@
-import { motion } from 'framer-motion';
+"use client"
 import LimitTable from "@/components/LimitTable";
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { Card } from '@/components/ui/card';
 import ErrorLog from '@/components/Err';
 import Loading from '@/components/Loader';
 
+
 const LimitPage = () => {
     const { data: limits = [], isLoading, isError } = useFetchLimitsQuery();
-
-    if (isError) {
-        return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />;
-    }
-
-    if (isLoading) {
-        return <Loading />;
-    }
-
-    // Extract animation variants
-    const animationVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-    };
-
     return (
-        <motion.div 
-            className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full h-screen overflow-auto"
-            initial="hidden"
-            animate="visible"
-            variants={animationVariants}
-            transition={{ duration: 0.5 }}
-        >
-            {/* @ts-ignore */}
+        <div 
+            className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full h-screen overflow-auto">
+         
             <LimitTable data={limits} />
             <div className="h-full overflow-auto">
                 <Card className="w-full h-full">
                     <iframe title="Limits" src='https://api.naga.ac/v1/limits' className='w-full h-full' />
                 </Card>
             </div>
-        </motion.div>
+        </div>
     );
 }
 
