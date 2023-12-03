@@ -6,29 +6,12 @@ export default async function Dashboard() {
  
   return (
     <>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
-            <div>
+        <div 
+            className="grid gap-4 grid-cols-1 w-full h-screen overflow-auto">
               <Card>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-[100px]">ID</TableHead>
-                      <TableHead>Owned By</TableHead>
-                      <TableHead>Limit</TableHead>
-                      <TableHead>Unit Costs</TableHead>
-                      <TableHead>Free?</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  
-                </Table>
+              <iframe className="w-full h-full" src="https://chat.naga.ac/" />
               </Card>
             </div>
-            <div>
-              <Card className="w-full h-full">
-                <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />
-              </Card>
-            </div>
-          </div>
 
     </>
   )
