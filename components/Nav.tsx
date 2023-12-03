@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useScreenSize } from '@/lib/hooks/useScreenSize'; 
 import { useAppSelector } from '@/lib/hooks'; 
 import MobileNav  from './MobileNav';
-import Core from '@/conf/cfg';
+import {Core} from '@/conf/cfg';
 interface NavProps {
   title: string;
   version: string;

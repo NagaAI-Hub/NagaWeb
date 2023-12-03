@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import createGlobe from 'cobe';
 import Cta from './Cta';
-import Core from '@/conf/cfg';
+import {Core} from '@/conf/cfg';
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

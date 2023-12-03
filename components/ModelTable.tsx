@@ -60,7 +60,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             </TableCell>
             <TableCell>
               {item.allowed_for && item.allowed_for.length > 0 ? (
-                item.allowed_for.includes('free') ? <Check color="green" /> : <X color="red" />
+                item.allowed_for.includes('free') ? <Check className="text-green-500" /> : <X className="text-rose-500" />
               ) : 'N/A'}
             </TableCell>
           </TableRow>

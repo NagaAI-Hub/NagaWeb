@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
-import Core from '@/conf/cfg'
+import {Core} from '@/conf/cfg'
 import StoreProvider from './StoreProvider'
 export const metadata: Metadata = {
   title: Core.title,

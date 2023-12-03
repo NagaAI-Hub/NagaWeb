@@ -36,7 +36,7 @@ const initialState: ModelsState = {
 export const fetchModels = createAsyncThunk(
   'models/fetchModels',
   async () => {
-    const response = await fetch('https://api.naga.ac/v1/models', { cache: 'force-cache' });
+    const response = await fetch('https://api.naga.ac/v1/models', );
     const data = await response.json();
     return data.data; // Extract the data array from the response
   }

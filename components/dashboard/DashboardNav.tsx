@@ -1,5 +1,5 @@
 "use client"
-import Core from "@/conf/cfg"
+import {Core} from "@/conf/cfg"
 import { Brain, Home, Settings2, Pen, MessageSquare, SmilePlus } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "../ui/badge"
