@@ -2,6 +2,7 @@ import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from ".
 import { FC } from 'react';
 import { Check, X } from "lucide-react";
 import { Card } from "./ui/card";
+import ErrorLog from "./Err";
 
 interface UnitCosts {
   input?: string;
@@ -27,6 +28,7 @@ interface ModelTableProps {
 }
 
 const ModelTable: FC<ModelTableProps> = ({ data }) => {
+  if (!data) return <ErrorLog errorMessage="Missing Data at ModelTable.tsx" />
   return (
     <Card className="h-full overflow-auto">
         <Table>
@@ -40,7 +42,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             </TableRow>
           </TableHeader>
     <TableBody>
-      {data.map((item) => {
+      {data.data.map((item) => {
         if (item.proxy_to) {
           return null; // skip rendering this item
         }

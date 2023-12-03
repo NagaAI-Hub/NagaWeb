@@ -2,13 +2,15 @@
 import ErrorLog from "@/components/Err"
 import ModelTable from "@/components/ModelTable"
 import { Card } from "@/components/ui/card"
-import { useFetchModels } from "@/lib/hooks/useFetchModels"
+import { useFetchModelsQuery } from "@/lib/api/modelsApi";
 import { motion } from 'framer-motion';
 
 const Models = () => {
-  const {status, error, models} = useFetchModels();
-  if (error || !models.models) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
-
+  const { data: models = [], isLoading, isError} = useFetchModelsQuery()
+  
+  if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
+  if(isLoading) return <div>Loading...</div>
+  
   const variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { delay: 0.5 } },
@@ -21,10 +23,7 @@ const Models = () => {
       initial="hidden"
       animate="visible"
     >
-          
-          {/* @ts-ignore */}
-          <ModelTable data={models.models} object={models.models}/>
-
+      <ModelTable data={models}/>
       <div className="h-full overflow-auto">
         <Card className="w-full h-full">
           <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />

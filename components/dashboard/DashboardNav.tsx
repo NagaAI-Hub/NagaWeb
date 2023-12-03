@@ -17,12 +17,12 @@ const navItems = [
 ];
 
 const DashboardNav = () => {
-  const { status, error, models } = useFetchModels();
-  if (error) return <ErrorLog errorMessage={error} />
-  const getBadgeText = () => {
-    if (!models.models) return "Error"
-    return status === "loading" || status === 'idle' ? "Loading Models" : models.models.length;
-  };
+  
+  // if (error) return <ErrorLog errorMessage={error} />
+  // const getBadgeText = () => {
+  //   if (!models.models) return "Error"
+  //   return status === "loading" || status === 'idle' ? "Loading Models" : models.models.length;
+  // };
 
   return (
 <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
@@ -44,9 +44,9 @@ const DashboardNav = () => {
                 <item.icon className="h-4 w-4" />
                 {item.label}
               </Link>
-              {item.label === 'Models' && (
+              {/* {item.label === 'Models' && (
                 <Badge className="absolute top-0 right-0 inline-block" variant="outline">{getBadgeText()}</Badge>
-              )}
+              )} */}
               {item.badge && (
                 <Badge className="absolute top-0 right-0 inline-block" variant="outline">{item.badge}</Badge>
               )}
