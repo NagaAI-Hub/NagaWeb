@@ -3,7 +3,6 @@ import { useCallback } from "react";
 import ReactFlow, {
   Node,
   addEdge,
-  Background,
   Edge,
   Connection,
   useNodesState,

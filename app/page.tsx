@@ -4,7 +4,7 @@ import Nav from '@/components/Nav'
 import Reel from '@/components/Reel'
 
 import SectionB from '@/components/SectionB'
-import Core from '@/conf/cfg'
+import {Core} from '@/conf/cfg'
 import { motion } from 'framer-motion'
 
 

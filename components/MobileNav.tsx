@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useMenuOpen } from '@/lib/hooks/useMenuOpen';

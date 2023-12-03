@@ -1,13 +1,16 @@
 "use client"
-import Core from "@/conf/cfg"
+import {Core} from "@/conf/cfg"
 import { Brain, Home, Settings2, Pen, MessageSquare, SmilePlus } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "../ui/badge"
-import { useFetchModels } from "@/lib/hooks/useFetchModels"
+import { useFetchModelsQuery } from "@/lib/api/modelsApi"
+import ErrorLog from "../Err"
+import Loading from "../Loader"
+
 
 const navItems = [
   { href: '/dashboard/models', icon: Home, label: 'Models' },
-  { href: '/dashboard/limits', icon: Settings2, label: 'Limits' },
+  { href: '/dashboard/limits', icon: Settings2, label: 'Limits', badge: 'Free' },
   { href: '#', icon: Pen, label: 'Playground', badge: 'Soon™' },
   { href: 'https://chat.naga.ac/', icon: MessageSquare, label: 'LibreChat', },
   { href: 'https://discord.naga.ac/', icon: SmilePlus, label: 'Discord', },
@@ -15,10 +18,11 @@ const navItems = [
 ];
 
 const DashboardNav = () => {
-  const { status, error, models } = useFetchModels();
-
+  const { data: models = [], isLoading, isError } = useFetchModelsQuery()
   const getBadgeText = () => {
-    return status === "loading" || status === 'idle' ? "Loading Models" : models.models.length;
+    if (!models || isError || isLoading) return "Error"
+    return models.length
+    
   };
 
   return (

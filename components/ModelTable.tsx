@@ -2,31 +2,12 @@ import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from ".
 import { FC } from 'react';
 import { Check, X } from "lucide-react";
 import { Card } from "./ui/card";
+import ErrorLog from "./Err";
 
-interface UnitCosts {
-  input?: string;
-  output?: string;
-  image?: number;
-}
 
-interface Model {
-  id: string;
-  object: string;
-  owned_by?: string;
-  limit?: string;
-  unit_costs?: UnitCosts;
-  allowed_for?: string[];
-  max_images?: number;
-  multiple_of?: number;
-  unit_cost?: string;
-  proxy_to?: string;
-}
 
-interface ModelTableProps {
-  data: Model[];
-}
-
-const ModelTable: FC<ModelTableProps> = ({ data }) => {
+const ModelTable: FC<any> = ({ data }) => {
+  if (!data) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
   return (
     <Card className="h-full overflow-auto">
         <Table>
@@ -40,7 +21,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             </TableRow>
           </TableHeader>
     <TableBody>
-      {data.map((item) => {
+      {data.map((item: any) => {
         if (item.proxy_to) {
           return null; // skip rendering this item
         }
@@ -60,7 +41,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             </TableCell>
             <TableCell>
               {item.allowed_for && item.allowed_for.length > 0 ? (
-                item.allowed_for.includes('free') ? <Check color="green" /> : <X color="red" />
+                item.allowed_for.includes('free') ? <Check className="text-green-500" /> : <X className="text-rose-500" />
               ) : 'N/A'}
             </TableCell>
           </TableRow>
