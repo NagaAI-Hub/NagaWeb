@@ -13,6 +13,7 @@ export const limitsApi = createApi({
   endpoints: (builder) => ({
     fetchLimits: builder.query<Limit[], void>({
       query: () => 'limits',
+      transformResponse: (response: { data: Limit[] }) => response.data,
     }),
   }),
 });

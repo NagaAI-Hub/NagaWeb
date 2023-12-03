@@ -25,6 +25,7 @@ export const modelsApi = createApi({
   endpoints: (builder) => ({
     fetchModels: builder.query<Model[], void>({
       query: () => 'models',
+      transformResponse: (response: { data: Model[] }) => response.data,
     }),
   }),
 });

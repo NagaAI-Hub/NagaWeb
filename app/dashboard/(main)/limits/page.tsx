@@ -24,7 +24,7 @@ const LimitPage = () => {
             transition={{ duration: 0.5 }}
         >
             {/* @ts-ignore */}
-            <LimitTable data={limits.data}/>
+            <LimitTable data={limits}/>
             <div className="h-full overflow-auto">
                 <Card className="w-full h-full">
                     <iframe src='https://api.naga.ac/v1/limits' className='w-full h-full' />

@@ -3,8 +3,9 @@ import {Core} from "@/conf/cfg"
 import { Brain, Home, Settings2, Pen, MessageSquare, SmilePlus } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "../ui/badge"
-import { useFetchModels } from "@/lib/hooks/useFetchModels"
+import { useFetchModelsQuery } from "@/lib/api/modelsApi"
 import ErrorLog from "../Err"
+import Loading from "../Loader"
 
 
 const navItems = [
@@ -17,12 +18,12 @@ const navItems = [
 ];
 
 const DashboardNav = () => {
-  
-  // if (error) return <ErrorLog errorMessage={error} />
-  // const getBadgeText = () => {
-  //   if (!models.models) return "Error"
-  //   return status === "loading" || status === 'idle' ? "Loading Models" : models.models.length;
-  // };
+  const { data: models = [], isLoading, isError } = useFetchModelsQuery()
+  const getBadgeText = () => {
+    if (!models || isError || isLoading) return "Error"
+    return models.length
+    
+  };
 
   return (
 <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
@@ -44,9 +45,9 @@ const DashboardNav = () => {
                 <item.icon className="h-4 w-4" />
                 {item.label}
               </Link>
-              {/* {item.label === 'Models' && (
+              {item.label === 'Models' && (
                 <Badge className="absolute top-0 right-0 inline-block" variant="outline">{getBadgeText()}</Badge>
-              )} */}
+              )}
               {item.badge && (
                 <Badge className="absolute top-0 right-0 inline-block" variant="outline">{item.badge}</Badge>
               )}

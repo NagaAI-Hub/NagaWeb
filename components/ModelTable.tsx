@@ -21,7 +21,7 @@ const ModelTable: FC<any> = ({ data }) => {
             </TableRow>
           </TableHeader>
     <TableBody>
-      {data.data.map((item: any) => {
+      {data.map((item: any) => {
         if (item.proxy_to) {
           return null; // skip rendering this item
         }
