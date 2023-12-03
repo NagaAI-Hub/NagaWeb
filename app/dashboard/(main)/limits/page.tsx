@@ -4,7 +4,6 @@ import LimitTable from "@/components/LimitTable"
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { Card } from '@/components/ui/card';
 import ErrorLog from '@/components/Err';
-import { useFetchLimits } from '@/lib/hooks/useFetchLimits';
 import Loading from '@/components/Loader';
 const LimitPage = () => { 
     const { data: limits = [], isLoading, isError} = useFetchLimitsQuery()
