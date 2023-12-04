@@ -14,7 +14,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: '/dashboard', icon: Home, label: 'Playground' },
   { href: '/dashboard/models', icon: Settings2, label: 'Models' },
-  { href: '/dashboard/limits', icon: HeartPulse, label: 'Limits', badge: 'Free' },
+  { href: '/dashboard/limits', icon: HeartPulse, label: 'Limits' },
   { href: 'https://discord.naga.ac/', icon: MessageSquare, label: 'Discord' },
 ];
 
