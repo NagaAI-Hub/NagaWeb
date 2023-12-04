@@ -11,7 +11,7 @@ interface NavProps {
   version: string;
   discord: string;
 }
-
+//test
 const Nav: React.FC<NavProps> = ({ title, version, discord }) => {
   useScreenSize();
   const isMobile = useAppSelector((state) => state.screenSize.isMobile);
