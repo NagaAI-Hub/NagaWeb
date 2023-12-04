@@ -8,13 +8,9 @@ import { useFetchModelsQuery } from "@/lib/api/modelsApi";
 
 const Models = () => {
   const { data: models = [], isLoading, isError} = useFetchModelsQuery()
-  if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
   if(isLoading) return <Loading />
+  if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
   
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { delay: 0.5 } },
-  };
 
   return (
     <div 
