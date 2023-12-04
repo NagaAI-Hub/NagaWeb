@@ -18,6 +18,11 @@ const navItems: NavItem[] = [
   { href: 'https://discord.naga.ac/', icon: MessageSquare, label: 'Discord' },
 ];
 
+const getBadgeText = (models: any, isError: boolean, isLoading: boolean) => {
+  if (!models || isError || isLoading) return "Error";
+  return models.length.toString();
+};
+
 const BadgeWrapper = ({ label, badgeText }: { label: string; badgeText?: string }) => (
   label === 'Models' || badgeText ? (
     <Badge className="absolute top-0 right-0 inline-block" variant="outline">
@@ -25,14 +30,10 @@ const BadgeWrapper = ({ label, badgeText }: { label: string; badgeText?: string 
     </Badge>
   ) : null
 );
-
 const DashboardNav = () => {
   const { data: models = [], isLoading, isError } = useFetchModelsQuery();
 
-  const getBadgeText = () => {
-    if (!models || isError || isLoading) return "Error";
-    return models.length.toString();
-  };
+
 
   return (
     <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
@@ -54,7 +55,7 @@ const DashboardNav = () => {
                     <item.icon className="h-4 w-4" />
                     {item.label}
                   </Link>
-                  <BadgeWrapper label={item.label} badgeText={item.badge || (item.label === 'Models' ? getBadgeText() : undefined)} />
+                  <BadgeWrapper label={item.label} badgeText={item.badge || (item.label === 'Models' ? getBadgeText(models, isError, isLoading) : undefined)} />
                 </li>
               ))}
             </ul>
