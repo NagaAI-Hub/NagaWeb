@@ -19,9 +19,11 @@ const LimitPage = () => {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full h-screen overflow-auto">
       <LimitTable data={limits} />
-      <Card className="w-full h-full overflow-auto">
+      <div className="h-full">
+      <Card className="w-full h-full">
         <iframe title="Limits" src='https://api.naga.ac/v1/limits' className='w-full h-full' />
       </Card>
+      </div>
     </div>
   );
 }

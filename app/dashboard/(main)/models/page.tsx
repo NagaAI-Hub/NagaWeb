@@ -15,10 +15,9 @@ const Models = () => {
   return (
     <div 
       className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full h-screen overflow-auto">
-      
       <ModelTable data={models}/>
       <div className="h-full overflow-auto">
-        <Card className="w-full h-full">
+        <Card className="w-full h-full overflow-auto">
           <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />
         </Card>
       </div>

@@ -3,6 +3,7 @@ import { Brain, Home, Settings2, MessageSquare, HeartPulse } from "lucide-react"
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
+import { useAppSelector } from "@/lib/hooks";
 
 interface NavItem {
   href: string;
@@ -32,8 +33,6 @@ const BadgeWrapper = ({ label, badgeText }: { label: string; badgeText?: string 
 );
 const DashboardNav = () => {
   const { data: models = [], isLoading, isError } = useFetchModelsQuery();
-
-
 
   return (
     <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
