@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
-import {Core} from '@/conf/cfg'
+import { Core } from '@/conf/cfg'
 import StoreProvider from './StoreProvider'
 import Head from 'next/head'
 export const metadata: Metadata = {
@@ -45,12 +45,13 @@ interface Metadata {
   metadataBase: URL | null;
   openGraph: OpenGraph;
 }
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  
+
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
@@ -64,21 +65,20 @@ export default function RootLayout({
         {metadata.openGraph.images.map((image, index) => (
           <meta key={index} property="og:image" content={image.url} />
         ))}
-        
+
       </Head>
       <StoreProvider>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          
-          {children}
-        </ThemeProvider>
-      </body>
-          </StoreProvider>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </StoreProvider>
     </html>
   )
 }
