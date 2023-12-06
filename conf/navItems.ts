@@ -1,4 +1,4 @@
-import { Home, Settings2, HeartPulse, MessageSquare } from "lucide-react";
+import { Home, Settings2, HeartPulse, MessageSquare, LayoutGrid } from "lucide-react";
 import { Core } from "./cfg";
 
 type LayoutContext = 'dashboard' | 'landing';
@@ -13,7 +13,7 @@ export interface NavItem {
 
 const navItems: NavItem[] = [
   { href: '/', icon: Home, label: 'Home', context: ['dashboard', 'landing'] },
-  { href: '/dashboard', icon: Home, label: 'Playground', context: ['dashboard'] },
+  { href: '/dashboard', icon: LayoutGrid, label: 'Playground', context: ['dashboard'] },
   { href: '/dashboard/models', icon: Settings2, label: 'Models', context: ['dashboard', 'landing'] },
   { href: '/dashboard/limits', icon: HeartPulse, label: 'Limits', context: ['dashboard'] },
   { href: Core.discord, icon: MessageSquare, label: 'Discord', context: ['dashboard', 'landing'] },
