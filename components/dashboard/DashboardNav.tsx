@@ -3,21 +3,11 @@ import { Brain, Home, Settings2, MessageSquare, HeartPulse } from "lucide-react"
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
-import { useAppSelector } from "@/lib/hooks";
+import { NavItem } from "@/conf/navItems";
 
-interface NavItem {
-  href: string;
-  icon: React.ElementType;
-  label: string;
-  badge?: string;
-}
-
-const navItems: NavItem[] = [
-  { href: '/dashboard', icon: Home, label: 'Playground' },
-  { href: '/dashboard/models', icon: Settings2, label: 'Models' },
-  { href: '/dashboard/limits', icon: HeartPulse, label: 'Limits' },
-  { href: 'https://discord.naga.ac/', icon: MessageSquare, label: 'Discord' },
-];
+type MobileNavProps = {
+  navItems: NavItem[];
+};
 
 const getBadgeText = (models: any, isError: boolean, isLoading: boolean) => {
   if (!models || isError || isLoading) return "Error";
@@ -31,7 +21,7 @@ const BadgeWrapper = ({ label, badgeText }: { label: string; badgeText?: string 
     </Badge>
   ) : null
 );
-const DashboardNav = () => {
+const DashboardNav: React.FC<MobileNavProps> = ({navItems}) => {
   const { data: models = [], isLoading, isError } = useFetchModelsQuery();
 
   return (
