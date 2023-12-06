@@ -50,7 +50,7 @@ const ModelTable: FC<any> = ({ data }) => {
                 </TableCell>
                 <TableCell>
                   {item.paidLimit ? (
-                    item.paidLimit.split(' ').map((word, index) => (
+                    item.paidLimit.split(' ').map((word: string, index: number) => (
                       // Check if the word is an integer using regex
                       /^\d+$/.test(word) ? (
                         // If it's an integer, render it in a span with a class for red color
@@ -59,7 +59,7 @@ const ModelTable: FC<any> = ({ data }) => {
                         // Else, render the word as is
                         <span key={index}>{word}</span>
                       )
-                    )).reduce((prev, curr) => [prev, ' ', curr]) // Add spaces between elements
+                    )).reduce((prev:any, curr:any) => [prev, ' ', curr]) // Add spaces between elements
                   ) : 'N/A'}
                 </TableCell>
 

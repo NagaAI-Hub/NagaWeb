@@ -18,8 +18,8 @@ const Models = () => {
     <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
   }
 // Combine models and limits data
-const combinedData = modelsData.map((model) => {
-  const modelLimit = limitsData.find(limit => limit.id === model.limit);
+const combinedData = modelsData?.map((model) => {
+  const modelLimit = limitsData?.find(limit => limit.id === model.limit);
   return {
     ...model,
     freeLimit: modelLimit?.free.map(([value, unit]) => `${value} ${unit}`).join(', ') || 'N/A',
