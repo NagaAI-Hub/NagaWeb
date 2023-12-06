@@ -6,20 +6,21 @@ import { useScreenSize } from '@/lib/hooks/useScreenSize';
 import { useAppSelector } from '@/lib/hooks'; 
 import MobileNav  from './MobileNav';
 import {Core} from '@/conf/cfg';
+import { getNavItems } from '@/conf/navItems';
 interface NavProps {
   title: string;
   version: string;
   discord: string;
 }
 
-const Nav: React.FC<NavProps> = ({ title, version, discord }) => {
+const Nav: React.FC<NavProps> = ({ title, discord }) => {
   useScreenSize();
   const isMobile = useAppSelector((state) => state.screenSize.isMobile);
-
+  const navItems = getNavItems('landing');
   return (
     <header className="flex items-center h-16 px-4 md:px-6">
       {isMobile ? (
-        <MobileNav discord={Core.discord} />
+        <MobileNav navItems={navItems} />
       ) : (
 
         <>

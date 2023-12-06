@@ -2,26 +2,35 @@
 import ErrorLog from "@/components/Err"
 import Loading from "@/components/Loader";
 import ModelTable from "@/components/ModelTable"
-import { Card } from "@/components/ui/card"
+import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
 
 
 const Models = () => {
-  const { data: models = [], isLoading, isError} = useFetchModelsQuery()
-  if(isLoading) return <Loading />
-  if (isError) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
-  
+  const { data: modelsData, isLoading: isLoadingModels, isError: isErrorModels } = useFetchModelsQuery();
+  const { data: limitsData, isLoading: isLoadingLimits, isError: isErrorLimits } = useFetchLimitsQuery();
 
+  if (isLoadingModels || isLoadingLimits) {
+    return <Loading />
+  }
+
+  if (isErrorModels || isErrorLimits) {
+    <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
+  }
+// Combine models and limits data
+const combinedData = modelsData?.map((model) => {
+  const modelLimit = limitsData?.find(limit => limit.id === model.limit);
+  return {
+    ...model,
+    freeLimit: modelLimit?.free.map(([value, unit]) => `${value} ${unit}`).join(', ') || 'N/A',
+    paidLimit: modelLimit?.paid.map(([value, unit]) => `${value} ${unit}`).join(', ') || 'N/A'
+  };
+});
   return (
     <div 
-      className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full h-screen overflow-auto">
-      
-      <ModelTable data={models}/>
-      <div className="h-full overflow-auto">
-        <Card className="w-full h-full">
-          <iframe src='https://api.naga.ac/v1/models' className='w-full h-full' />
-        </Card>
-      </div>
+      className="grid gap-4 md:grid-cols-1 lg:grid-cols-1 sm:grid-cols-1 w-full h-screen overflow-auto">
+      <ModelTable data={combinedData}/>
+  
     </div>
   )
 }

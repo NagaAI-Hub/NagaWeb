@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Endpoints }  from '@/conf/cfg';
 
 interface Limit {
+    id: string;
     free: [number, string][];
     paid: [number, string][];
   }

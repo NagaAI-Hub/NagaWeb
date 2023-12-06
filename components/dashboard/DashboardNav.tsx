@@ -1,39 +1,33 @@
-import { Core } from "@/conf/cfg";
-import { Brain, Home, Settings2, MessageSquare, HeartPulse } from "lucide-react";
-import Link from "next/link";
-import { Badge } from "../ui/badge";
-import { useFetchModelsQuery } from "@/lib/api/modelsApi";
+import Link from 'next/link';
+import { Brain } from 'lucide-react';
+import { Badge } from '../ui/badge';
+import { NavItem } from '@/conf/navItems';
+import { useDashboardNav } from './useDashboardNav';
+import { Core } from '@/conf/cfg';
 
-interface NavItem {
-  href: string;
-  icon: React.ElementType;
+type BadgeWrapperProps = {
   label: string;
-  badge?: string;
-}
-
-const navItems: NavItem[] = [
-  { href: '/dashboard', icon: Home, label: 'Playground' },
-  { href: '/dashboard/models', icon: Settings2, label: 'Models' },
-  { href: '/dashboard/limits', icon: HeartPulse, label: 'Limits' },
-  { href: 'https://discord.naga.ac/', icon: MessageSquare, label: 'Discord' },
-];
-
-const getBadgeText = (models: any, isError: boolean, isLoading: boolean) => {
-  if (!models || isError || isLoading) return "Error";
-  return models.length.toString();
+  badgeText?: string;
 };
 
-const BadgeWrapper = ({ label, badgeText }: { label: string; badgeText?: string }) => (
-  label === 'Models' || badgeText ? (
+type DashboardNavProps = {
+  navItems: NavItem[];
+};
+
+const BadgeWrapper: React.FC<BadgeWrapperProps> = ({ label, badgeText }) => (
+  (label === 'Models' || badgeText) && (
     <Badge className="absolute top-0 right-0 inline-block" variant="outline">
-      {label === 'Models' ? badgeText : badgeText}
+      {badgeText}
     </Badge>
-  ) : null
+  )
 );
-const DashboardNav = () => {
-  const { data: models = [], isLoading, isError } = useFetchModelsQuery();
 
 
+const DashboardNav: React.FC<DashboardNavProps> = ({ navItems }) => {
+  const { getBadgeText } = useDashboardNav();
+
+  const determineBadgeText = (item: NavItem) => 
+    item.badge || (item.label === 'Models' ? getBadgeText(item.label) : undefined);
 
   return (
     <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
@@ -49,13 +43,13 @@ const DashboardNav = () => {
           <div className="flex-1 px-4">
             <h2 className="font-semibold text-lg mb-4">Navigation</h2>
             <ul className="space-y-2">
-              {navItems.map((item, index) => (
-                <li key={index} className="relative">
+              {navItems.map((item) => (
+                <li key={item.label} className="relative"> 
                   <Link className="flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" href={item.href}>
                     <item.icon className="h-4 w-4" />
                     {item.label}
                   </Link>
-                  <BadgeWrapper label={item.label} badgeText={item.badge || (item.label === 'Models' ? getBadgeText(models, isError, isLoading) : undefined)} />
+                  <BadgeWrapper label={item.label} badgeText={determineBadgeText(item)} />
                 </li>
               ))}
             </ul>
