@@ -1,6 +1,5 @@
 "use client"
 import DashboardNav from '@/components/dashboard/DashboardNav'
-import { useState } from 'react'
 import { useScreenSize } from '@/lib/hooks/index'
 import { useAppSelector } from '@/lib/hooks'
 import MobileNav from '@/components/MobileNav'
@@ -8,7 +7,6 @@ import { getNavItems } from '@/conf/navItems'
 import { BadgeCheck } from 'lucide-react'
 import { Core } from '@/conf/cfg'
 import Link from 'next/link'
-let placeholder = ['Search is being implemented...', 'Stop clicking it already.', 'God damn it why you waste precious bytes of data.', 'Imagine Segfault took time to implement this feature lol', 'smh']
 
 export default function DashboardLayout({
   children,
@@ -18,13 +16,8 @@ export default function DashboardLayout({
   useScreenSize();
 
   const isMobile = useAppSelector((state) => state.screenSize.isMobile);
-  const [index, setIndex] = useState(0);
-  const navItems = getNavItems('dashboard');
 
-  const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
-    e.currentTarget.placeholder = placeholder[index];
-    setIndex((index + 1) % placeholder.length);
-  }
+  const navItems = getNavItems('dashboard');
 
 
   return (
