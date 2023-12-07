@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Brain, LogIn,  } from 'lucide-react';
 import { Button } from '@/components/ui/button'; 
-import { useScreenSize } from '@/lib/hooks/useScreenSize'; 
+import { useScreenSize } from '@/lib/hooks/index'; 
 import { useAppSelector } from '@/lib/hooks'; 
 import MobileNav  from './MobileNav';
 import {Core} from '@/conf/cfg';
