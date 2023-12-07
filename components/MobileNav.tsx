@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { useMenuOpen } from '@/lib/hooks/useMenuOpen';
+import { useMenuOpen } from '@/lib/hooks/index';
 import { NavItem } from '@/conf/navItems';
 
 type MobileNavProps = {

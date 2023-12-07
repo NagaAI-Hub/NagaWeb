@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@/lib/hooks';
 import { setMobile } from '@/lib/features/screenSize/screenSizeSlice';
 
-export const useScreenSize = () => {
+export default function useScreenSize() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

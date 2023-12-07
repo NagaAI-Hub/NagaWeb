@@ -2,7 +2,7 @@
 import { Input } from '@/components/ui/input'
 import DashboardNav from '@/components/dashboard/DashboardNav'
 import { useState } from 'react'
-import { useScreenSize } from '@/lib/hooks/useScreenSize'
+import { useScreenSize } from '@/lib/hooks/index'
 import { useAppSelector } from '@/lib/hooks'
 import MobileNav from '@/components/MobileNav'
 import { getNavItems } from '@/conf/navItems'

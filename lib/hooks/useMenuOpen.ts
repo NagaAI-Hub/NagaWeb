@@ -2,7 +2,7 @@
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { toggleMenu, setMenuOpen } from '@/lib/features/isMenuOpen/isMenuOpenSlice';
 
-export const useMenuOpen = () => {
+export default function useMenuOpen() {
   const dispatch = useAppDispatch();
   const isMenuOpen = useAppSelector((state) => state.isMenuOpen.value);
 
