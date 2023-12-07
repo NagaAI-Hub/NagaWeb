@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/components/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 import { Core } from '@/conf/cfg'
 import StoreProvider from './StoreProvider'
-import Head from 'next/head'
 export const metadata: Metadata = {
   title: Core.title,
   description: Core.description,
@@ -54,19 +53,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:locale" content={metadata.openGraph.locale} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:site_name" content={metadata.openGraph.siteName} />
-        {metadata.openGraph.images.map((image, index) => (
-          <meta key={index} property="og:image" content={image.url} />
-        ))}
-
-      </Head>
       <StoreProvider>
         <body>
           <ThemeProvider
