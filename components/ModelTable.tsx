@@ -5,10 +5,9 @@ import { Card } from "./ui/card";
 import ErrorLog from "./Err";
 
 
-
 const ModelTable: FC<any> = ({ data }) => {
-  if (!data) return <ErrorLog errorMessage={'Error loading models, Report this incident with console print.'} />
-  console.log(data)
+  if (!data) return <ErrorLog errorMessage={'Error loading models. Fetch incident............'} />
+  data.map((item: any) => {console.log(item.id)})
   return (
     <Card className="h-full overflow-auto">
       <Table>
@@ -16,11 +15,10 @@ const ModelTable: FC<any> = ({ data }) => {
           <TableRow>
             <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Owned By</TableHead>
-            <TableHead>Limit</TableHead>
+            <TableHead>Type</TableHead>
             <TableHead>Unit Costs</TableHead>
             <TableHead>Free Limit</TableHead>
             <TableHead>Paid Limit</TableHead>
-            <TableHead>Type</TableHead>
             <TableHead>Free?</TableHead>
           </TableRow>
         </TableHeader>
@@ -34,7 +32,9 @@ const ModelTable: FC<any> = ({ data }) => {
               <TableRow key={item.id}>
                 <TableCell className="font-bold">{item.id.toUpperCase()}</TableCell>
                 <TableCell>{item.owned_by ? item.owned_by.toUpperCase() : 'N/A'}</TableCell>
-                <TableCell>{item.limit?.toUpperCase()}</TableCell>
+                <TableCell>
+                {item.modelType}
+                </TableCell>
                 <TableCell>
                   {item.unit_costs ? (
                     <div className="flex flex-col">
@@ -63,9 +63,7 @@ const ModelTable: FC<any> = ({ data }) => {
                   ) : 'N/A'}
                 </TableCell>
 
-                <TableCell>
-                  <p>Image</p>
-                </TableCell>
+               
                                 <TableCell>
                   {item.allowed_for && item.allowed_for.length > 0 ? (
                     item.allowed_for.includes('free') ? <Check className="text-green-500" /> : <X className="text-rose-500" />

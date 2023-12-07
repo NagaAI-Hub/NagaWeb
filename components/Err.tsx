@@ -1,15 +1,18 @@
 
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 
-import { hexDump } from "@/lib/hexDump";
+import { useHexDump } from "@/lib/hooks/index";
 interface ComponentProps {
     errorMessage: string;
   }
   
 export default function ErrorLog({ errorMessage }: ComponentProps) {
     //Turn errorMessage to buffer
+    
     const buffer = Buffer.from(errorMessage);
-    const hx = hexDump(buffer);
+    const hexDumpString = useHexDump(buffer);
+    
+   
   return (
     <Card className="bg-red-50 dark:bg-red-900 text-red-700 dark:text-red-200 p-4 rounded-md shadow-md">
     <CardHeader className="flex items-center space-x-2">
@@ -18,8 +21,8 @@ export default function ErrorLog({ errorMessage }: ComponentProps) {
     </CardHeader>
     <CardContent className="mt-2 space-y-2">
     
-      <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded-md">
-        <pre>{hx}</pre>
+      <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded-md text-center">
+        <pre>{hexDumpString}</pre>
       </code>
     </CardContent>
     

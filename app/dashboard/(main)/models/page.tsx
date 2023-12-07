@@ -5,7 +5,6 @@ import ModelTable from "@/components/ModelTable"
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
 
-
 const Models = () => {
   const { data: modelsData, isLoading: isLoadingModels, isError: isErrorModels } = useFetchModelsQuery();
   const { data: limitsData, isLoading: isLoadingLimits, isError: isErrorLimits } = useFetchLimitsQuery();
