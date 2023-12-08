@@ -4,29 +4,28 @@ function printValue(value: number): string {
   return (value >= 0x20 && value <= 0x7e) ? String.fromCharCode(value) : '.';
 }
 
-export default function useHexDump(buff: Buffer): string {
+export default function useHexDump(buff: Buffer): { hex: string, ascii: string } {
   return useMemo(() => {
-    let output = '';
-    let lineHex = '';
-    let lineAscii = '';
+    let hex = '';
+    let ascii = '';
     let offset = 0;
 
     Array.from(buff).forEach((value, index) => {
-      lineHex += `${value.toString(16).padStart(2, '0')} `;
-      lineAscii += printValue(value);
+      hex += `${value.toString(16).padStart(2, '0')} `;
+      ascii += printValue(value);
 
       if ((index + 1) % 16 === 0) {
-        output += `${offset.toString(16).padStart(8, '0')} | ${lineHex.trim()} | ${lineAscii}\n`;
-        lineHex = '';
-        lineAscii = '';
+        hex += '\n';
+        ascii += '\n';
         offset += 16;
       }
     });
 
-    if (lineHex !== '') {
-      output += `${offset.toString(16).padStart(8, '0')} | ${lineHex.trim().padEnd(3 * 16 + 2, ' ')} | ${lineAscii}\n`;
+    if (hex !== '') {
+      hex = hex.trim().padEnd(3 * 16 + 2, ' ');
+      ascii = ascii.trim();
     }
 
-    return output;
+    return { hex, ascii };
   }, [buff]);
 }
