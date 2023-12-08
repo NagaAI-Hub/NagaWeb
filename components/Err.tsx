@@ -20,10 +20,19 @@ export default function ErrorLog({ errorMessage }: ComponentProps) {
       <CardTitle>Error Information</CardTitle>
     </CardHeader>
     <CardContent className="mt-2 space-y-2">
-    
-      <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded-md text-center">
-        <pre>{hexDumpString}</pre>
+    <div className="flex dark:bg-gray-800 text-left p-4">
+      <div>
+    <code>
+        {hexDumpString.hex}
       </code>
+      </div>
+      <div>
+      <code>
+        {hexDumpString.ascii}
+      </code>
+      </div>
+    </div>
+      
     </CardContent>
     
   </Card>

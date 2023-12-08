@@ -39,7 +39,7 @@ export default function DashboardLayout({
                 <p className="text-sm text-gray-500 ml-2 hover:underline no-underline">Unlock additional perks by upgrading to Pro today!</p>
               </Link>
             </header>
-            <main className="flex flex-1 p-4 md:p-6 h-[calc(100%-4rem)] overflow-auto">
+            <main className=" p-4 md:p-6 h-[calc(100%-4rem)] overflow-auto">
               {children}
             </main>
           </div>
