@@ -7,7 +7,6 @@ import ErrorLog from "./Err";
 
 const ModelTable: FC<any> = ({ data }) => {
   if (!data) return <ErrorLog errorMessage={'Error loading models. Fetch incident............'} />
-  data.map((item: any) => {console.log(item.id)})
   return (
     <Card className="h-full overflow-auto">
       <Table>
