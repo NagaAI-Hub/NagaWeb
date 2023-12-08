@@ -1,5 +1,21 @@
+const { next } = require('next');
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
-const withMDX = require('@next/mdx')();
+/** @type {import('next').NextConfig} */
+
+
+module.exports = (phase, {defaultConfig}) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      devIndicators: {
+        buildActivityPosition: 'top-right',
+        experimental: {
+          webVitalsAttribution: ['CLS', 'LCP']
+        },
+      },
+  }
+  
+
+}
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   swcMinify: true,
@@ -8,19 +24,5 @@ const nextConfig = {
     mdxRs: true,
   }
 };
-
-module.exports = (phase) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return withMDX({
-      ...nextConfig,
-      devIndicators: {
-        buildActivityPosition: 'top-right',
-      },
-      experimental: {
-        webVitalsAttribution: ['CLS', 'LCP']
-      },
-    });
-  }
-
-  return withMDX(nextConfig);
+return nextConfig
 };

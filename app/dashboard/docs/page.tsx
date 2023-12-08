@@ -33,7 +33,7 @@ const Docs = () => {
                     <div className="my-4 bg-neutral-900 p-4 rounded-xl"><code>OPENAI_API_KEY <br /> OPENAI_BASE_URL</code>
 
                     </div>
-                    <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI's packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI's API to Naga.</p>
+                    <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI&apos;s packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI&apos;s API to Naga.</p>
                     <div className="my-4 bg-neutral-900 p-4 rounded-xl">
                         export OPENAI_API_KEY=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
                         export OPENAI_API_URL=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0,-1)}</span>
