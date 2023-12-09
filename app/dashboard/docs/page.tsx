@@ -1,6 +1,7 @@
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Endpoints } from "@/conf/cfg";
 import { Terminal } from "lucide-react";
+
 const Docs = () => {
     return (
         <div>
