@@ -29,7 +29,7 @@ interface CodeExampleProps {
 interface ResourceLinksProps {
     links: string[];
 }
-const OAI_PATH_VARS = ["OPENAI_API_KEY", "OPENAI_API_BASE"];
+const OAI_PATH_VARS = ["OPENAI_API_KEY", "OPENAI_BASE_URL"];
 const R_Links = [
     "https://api.naga.ac/docs",
     "https://platform.openai.com/docs/introduction",
