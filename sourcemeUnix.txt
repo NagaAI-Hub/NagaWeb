@@ -1,2 +1,2 @@
-export OPENAI_API_KEY='your_openai_api_key'
-export OPENAI_API_BASE='your_openai_api_base'
+export OPENAI_API_KEY='YourNagaKey'
+export OPENAI_API_BASE='https://api.naga.ac/v1'
