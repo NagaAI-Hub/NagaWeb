@@ -3,6 +3,7 @@ import { Endpoints } from "@/conf/cfg";
 import { Terminal } from "lucide-react";
 
 const Docs = () => {
+    const OAI_PATH_VARS = ["OPENAI_API_KEY", "OPENAI_API_BASE"]
     return (
         <div>
             <div className="grid grid-cols-2">
@@ -36,13 +37,13 @@ const Docs = () => {
                     </div>
                     <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI&apos;s packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI&apos;s API to Naga.</p>
                     <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        export OPENAI_API_KEY=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
-                        export OPENAI_BASE_URL=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+                        export {OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
+                        export {OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
                     </div>
                     <p className="text-muted-foreground">Or alternatively if you are running NT (Windows) </p>
                     <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        $env:OPENAI_API_KEY=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
-                        $env:OPENAI_BASE_URL=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+                        $env:{OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
+                        $env:{OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
                     </div>
                     <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
                         You can also source these variables in your shell startup files
