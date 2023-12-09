@@ -13,13 +13,27 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 
-import {pythonCodes, javascriptCodes} from "./codes";
+import { pythonCodes, javascriptCodes } from "./codes";
 import Link from "next/link";
+
+interface CodeExampleProps {
+    content: {
+        [key: string]: {
+            title: string;
+            code: string;
+        };
+    };
+    language: string;
+}
+
+interface ResourceLinksProps {
+    links: string[];
+}
 const OAI_PATH_VARS = ["OPENAI_API_KEY", "OPENAI_API_BASE"];
 const R_Links = [
-    "https://api.naga.ac/docs", 
-    "https://platform.openai.com/docs/introduction", 
-    "https://developer.mozilla.org/en-US/", 
+    "https://api.naga.ac/docs",
+    "https://platform.openai.com/docs/introduction",
+    "https://developer.mozilla.org/en-US/",
     "https://www.freecodecamp.org/news/python-fundamentals-for-data-science/"
 ];
 
@@ -47,7 +61,7 @@ const ExampleUseCase = () => (
             Example Use Case: Running PR Agent Locally
         </h3>
         <p className="text-muted-foreground">Consider the scenario where you wish to run a local instance of PR Agent. The standard documentation indicates the necessity of an OpenAI API key. While this is accurate, the structure of these systems allows for a more direct approach. You can utilize the Naga API without modifying any existing code.</p>
-   
+
     </>
 );
 const LeveragingOfficialPackages = () => (
@@ -57,60 +71,60 @@ const LeveragingOfficialPackages = () => (
         </h3>
         <p className="text-muted-foreground">he official OpenAI packages available on PyPI utilize PATH variables such as </p>
         <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        {OAI_PATH_VARS.map((v, i) => (
-                            <div key={i}>
-                                <span className="text-rose-500">{v}</span>
-                            </div>
-                        )
-                        )}
+            {OAI_PATH_VARS.map((v, i) => (
+                <div key={i}>
+                    <span className="text-rose-500">{v}</span>
+                </div>
+            )
+            )}
 
-                    </div>
-                    <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI&apos;s packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI&apos;s API to Naga.</p>
-                    <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        export {OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
-                        export {OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
-                    </div>
-                    <p className="text-muted-foreground">Or alternatively if you are running NT (Windows) </p>
-                    <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        $env:{OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
-                        $env:{OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
-                    </div>
-                    <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
-                        You can also source these variables in your shell startup files
-                    </h3>
-                    Unix only!
-                    <div className="my-4 bg-neutral-900 p-4 rounded-xl">
-                        <span className="text-rose-500">curl</span> https://raw.githubusercontent.com/segmentationf4u1t/NagaWeb/main/sourcemeUnix.txt <span className="text-rose-500">{'>>'}</span> ~/.bashrc
-                    </div>
-                    <p className="text-muted-foreground">This script will append the path variables to your shell startup file. You can then replace the values with your Naga API key and Naga API base URL.
-                    </p>
-                    
+        </div>
+        <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI&apos;s packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI&apos;s API to Naga.</p>
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+            export {OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
+            export {OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+        </div>
+        <p className="text-muted-foreground">Or alternatively if you are running NT (Windows) </p>
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+            $env:{OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
+            $env:{OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+        </div>
+        <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
+            You can also source these variables in your shell startup files
+        </h3>
+        Unix only!
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+            <span className="text-rose-500">curl</span> https://raw.githubusercontent.com/segmentationf4u1t/NagaWeb/main/sourcemeUnix.txt <span className="text-rose-500">{'>>'}</span> ~/.bashrc
+        </div>
+        <p className="text-muted-foreground">This script will append the path variables to your shell startup file. You can then replace the values with your Naga API key and Naga API base URL.
+        </p>
+
 
     </>
 );
 
-const ResourceLinks = ({ links }) => (
+const ResourceLinks = ({ links }: ResourceLinksProps) => (
     <>
-    <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
-    Example Codes & Implementations
-    </h3>
-    <p className="text-muted-foreground">
-                        On the right side of this webpage, you&apos;ll find sample code for Python and JavaScript. While similar in implementation, they differ in syntax, reflecting the architectural distinctions between the two languages. While not exhaustive, these examples serve as a solid starting point for using both OpenAI and NagaAI APIs.
-                    </p>
-                    <p className="text-muted-foreground py-2">
-                        For other references, parameters, and endpoints please visit those resources:
+        <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
+            Example Codes & Implementations
+        </h3>
+        <p className="text-muted-foreground">
+            On the right side of this webpage, you&apos;ll find sample code for Python and JavaScript. While similar in implementation, they differ in syntax, reflecting the architectural distinctions between the two languages. While not exhaustive, these examples serve as a solid starting point for using both OpenAI and NagaAI APIs.
+        </p>
+        <p className="text-muted-foreground py-2">
+            For other references, parameters, and endpoints please visit those resources:
 
-                    </p>
-    <ul className="text-muted-foreground">
-        {links.map((link, i) => (
-            <li key={i}>
-                <Link href={link}>
-                    <p className="text-rose-500">{link}</p>
-                </Link>
-            </li>
-        ))}
-    </ul>
-    
+        </p>
+        <ul className="text-muted-foreground">
+            {links.map((link: string, i: number) => (
+                <li key={i}>
+                    <Link href={link}>
+                        <p className="text-rose-500">{link}</p>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+
     </>
 );
 
@@ -124,7 +138,7 @@ const CodeExamplesTabs = () => (
         <CodeExamples content={javascriptCodes} language="javascript" />
     </Tabs>
 );
-const CodeExamples = ({ content, language }) => (
+const CodeExamples = ({ content, language }: CodeExampleProps) => (
     <TabsContent value={language}>
         {Object.entries(content).map(([key, value]) => (
             <div key={key}>
