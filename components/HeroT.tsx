@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
-import createGlobe from 'cobe';
+import React from 'react';
+
 import Cta from './Cta';
 import {Core} from '@/conf/cfg';
 import dynamic from 'next/dynamic'
