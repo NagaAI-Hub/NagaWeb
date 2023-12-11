@@ -80,21 +80,27 @@ const LeveragingOfficialPackages = () => (
 
         </div>
         <p className="text-muted-foreground">Similarly, this extends to projects developed using OpenAI&apos;s packages. Consider it like this: Any application that incorporates an OpenAI package can be seamlessly integrated with Naga. This flexibility is not only highly convenient but also enables the straightforward migration of existing applications that utilize OpenAI&apos;s API to Naga.</p>
-        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl overflow-hidden">
+            <div className="block word-wrap break-words white-space-normal">
             export {OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
             export {OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+            </div>
         </div>
         <p className="text-muted-foreground">Or alternatively if you are running NT (Windows) </p>
-        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl overflow-hidden">
+        <div className="block word-wrap break-words white-space-normal">
             $env:{OAI_PATH_VARS[0]}=<span className="text-rose-500">YourNagaKeyGoesHere</span><br />
             $env:{OAI_PATH_VARS[1]}=<span className="text-rose-500">{Endpoints.NAGA_BASE_URL.slice(0, -1)}</span>
+                </div>
         </div>
         <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
             You can also source these variables in your shell startup files
         </h3>
         Unix only!
-        <div className="my-4 bg-neutral-900 p-4 rounded-xl">
+        <div className="my-4 bg-neutral-900 p-4 rounded-xl overflow-hidden">
+        <div className="block word-wrap break-words white-space-normal">
             <span className="text-rose-500">curl</span> https://raw.githubusercontent.com/segmentationf4u1t/NagaWeb/main/sourcemeUnix.txt <span className="text-rose-500">{'>>'}</span> ~/.bashrc
+        </div>
         </div>
         <p className="text-muted-foreground">This script will append the path variables to your shell startup file. You can then replace the values with your Naga API key and Naga API base URL.
         </p>
@@ -154,18 +160,18 @@ const CodeExamples = ({ content, language }: CodeExampleProps) => (
 );
 const Docs = () => {
     return (
-        <div>
-            <div className="grid grid-cols-2">
-                <div>
-                    <DocumentationAlert />
-                    <DocumentationContent />
-                    <ResourceLinks links={R_Links} />
-                </div>
-                <div className="px-4">
-                    <CodeExamplesTabs />
-                </div>
+        <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row">
+            <div className="mb-6 md:mb-0 md:pr-6 md:w-1/2">
+                <DocumentationAlert />
+                <DocumentationContent />
+                <ResourceLinks links={R_Links} />
+            </div>
+            <div className="md:w-1/2">
+                <CodeExamplesTabs />
             </div>
         </div>
+    </div>
     );
 };
 
