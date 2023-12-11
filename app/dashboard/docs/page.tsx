@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 {/* @ts-ignore */ }
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Endpoints } from "@/conf/cfg";
+
 import {
     Tabs,
     TabsContent,
@@ -117,6 +118,16 @@ const ResourceLinks = ({ links }: ResourceLinksProps) => (
         <p className="text-muted-foreground">
             On the right side of this webpage, you&apos;ll find sample code for Python and JavaScript. While similar in implementation, they differ in syntax, reflecting the architectural distinctions between the two languages. While not exhaustive, these examples serve as a solid starting point for using both OpenAI and NagaAI APIs.
         </p>
+        <p className="text-muted-foreground">
+            All of Naga Endpoints as of today:
+        </p>
+        {Object.entries(Endpoints).map(([key,val], index) => (
+            <div key={key}>
+                <Link href={val}>
+                <span className="text-rose-500">{val}</span>
+                </Link>
+            </div>
+        ))}
         <p className="text-muted-foreground py-2">
             For other references, parameters, and endpoints please visit those resources:
 
