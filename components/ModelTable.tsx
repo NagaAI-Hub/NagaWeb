@@ -3,6 +3,12 @@ import { FC } from 'react';
 import { Check, X } from "lucide-react";
 import { Card } from "./ui/card";
 import ErrorLog from "./Err";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 
 const ModelTable: FC<any> = ({ data }) => {
