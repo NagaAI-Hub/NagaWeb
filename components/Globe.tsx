@@ -24,11 +24,11 @@ const Globe = () => {
                 markerColor: [0.1, 0.8, 1],
                 glowColor: [1, 1, 1],
                 markers: [
-                    { location: [39.0291678, 125.5862294], size: 0.02 },
-                    { location: [50.80940011, 19.0403719], size: 0.02 },
-                    { location: [39.9390304, 116.2326555], size: 0.02 },
-                    { location: [48.6040185, 37.9690239], size: 0.02 },
-                    { location: [31.5017034, 34.4571027], size: 0.02 },
+                    { location: [39.0291678, 125.5862294], size: 0.04 },
+                    { location: [50.80940011, 19.0403719], size: 0.04 },
+                    { location: [39.9390304, 116.2326555], size: 0.04 },
+                    { location: [48.6040185, 37.9690239], size: 0.04 },
+                    { location: [31.5017034, 34.4571027], size: 0.04 },
                 ],
                 onRender: (state) => {
                     state.phi = phi;

@@ -4,6 +4,7 @@ import React from 'react';
 import Cta from './Cta';
 import {Core} from '@/conf/cfg';
 import dynamic from 'next/dynamic'
+import Promotion from './Promotion';
 const HeroSection: React.FC = () => {
   const DynamicGlobe = dynamic(() => import('./Globe'), {
     loading: () => <p>Loading...</p>,
@@ -11,6 +12,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="flex flex-col text-white mt-4" style={{ backgroundImage: 'url("/patternpad.svg")' }}>
+     <Promotion />
       <div className="text-center mx-auto sm:max-w-1xl lg:max-w-2xl">
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 py-4">
           Your Gateway to Cutting-Edge AI Technologies.
