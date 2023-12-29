@@ -1,12 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Endpoints }  from '@/conf/cfg';
+import { Endpoints } from '@/conf/cfg';
+
+interface LimitTier {
+  [tierName: string]: [number, string][];
+}
 
 interface Limit {
-    id: string;
-    free: [number, string][];
-    paid: [number, string][];
-  }
-  
+  id: string;
+  object: string;
+  tiers: LimitTier;
+}
 
 export const limitsApi = createApi({
   reducerPath: 'limitsApi',
