@@ -1,7 +1,7 @@
 "use client"
 import ErrorLog from "@/components/Err";
 import Loading from "@/components/Loader";
-import ModelTable from "@/components/ModelTable";
+import ModelTable from "@/components/ModelTable/ModelTable";
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { useFetchModelsQuery } from "@/lib/api/modelsApi";
 
