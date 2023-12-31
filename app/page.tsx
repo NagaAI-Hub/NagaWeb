@@ -13,7 +13,7 @@ export default function Home() {
     <div 
     className='container'
   >
-    <DynamicXmas />
+    
     <Nav title={Core.title} version={Core.version} discord={Core.discord} />
     <HeroSection  />
     <SectionB/>
