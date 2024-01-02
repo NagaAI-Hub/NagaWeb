@@ -9,7 +9,7 @@ interface TiersInfoProps {
 
 const TiersInfo: FC<TiersInfoProps> = ({ tierData, tierKey }) => {
     if (!tierData || !tierData[tierKey]) {
-        return <span className="text-yellow-500 font-bold">Upgrade to Pro!</span>;
+        return <span>Not available</span>;
       }
   return <span>{tierData[tierKey]}</span>;
 };

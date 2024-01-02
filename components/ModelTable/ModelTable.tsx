@@ -1,10 +1,10 @@
 // ModelTable.tsx
 import React, { FC } from 'react';
-import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from "./ui/table";
-import { Card } from "./ui/card";
-import ErrorLog from "./Err";
+import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from "../ui/table";
+import { Card } from "../ui/card";
+import ErrorLog from "../Err";
 import ModelRow from './ModelRow'; // New component for table rows
-
+import { Zap } from 'lucide-react';
 export interface Pricing {
   per_input_token?: number;
   per_output_token?: number;
@@ -46,10 +46,14 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Type</TableHead>
             <TableHead>Cost</TableHead>
-            <TableHead>Free Limit</TableHead>
-            <TableHead>Tier-1 Limit</TableHead>
-            <TableHead>Tier-2 Limit</TableHead>
-            <TableHead>Tier-3 Limit</TableHead>
+            <TableHead>Free Limit
+              
+            </TableHead>
+            <TableHead className='text-blue-500'>Tier-1 Limit</TableHead>
+            <TableHead className='text-purple-500'>Tier-2 Limit</TableHead>
+            <TableHead className='text-rose-500'>
+              Tier-3 Limit 
+              </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
