@@ -22,8 +22,8 @@ Live: [NagaAI Website](https://naga.ac/)
 ## 📸 Project Screenshots
 
 <p align="center">
-  <img src="https://homosexual.ovh/assets/DeHashed.ppweupp6qzyl.png" alt="NagaAI Screenshot 1" width="512" height="512">
-  <img src="https://homosexual.ovh/assets/DeHashed.r7nli9dvaqvk.png" alt="NagaAI Screenshot 2" width="512" height="512">
+  <img src="https://homosexual.ovh/assets/DeHashed.ppweupp6qzyl.png" alt="NagaAI Screenshot 1" width="512" height="288">
+  <img src="https://homosexual.ovh/assets/DeHashed.r7nli9dvaqvk.png" alt="NagaAI Screenshot 2" width="512" height="288">
 </p>
 
 ## 🛠️ Installation Steps
