@@ -54,6 +54,9 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
             <TableHead className='text-rose-500'>
               Tier-3 Limit 
               </TableHead>
+              <TableHead className='text-rose-600'>
+              Tier-4 Limit
+              </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
