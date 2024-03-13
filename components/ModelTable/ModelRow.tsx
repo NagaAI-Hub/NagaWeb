@@ -21,6 +21,7 @@ const ModelRow: FC<ModelRowProps> = ({ model }) => {
       <TableCell className="text-blue-500 font-bold">{tiersData ? <TiersInfo tierData={tiersData} tierKey={'tier-1'} /> : null}</TableCell>
       <TableCell className="text-purple-500 font-bold">{tiersData ? <TiersInfo tierData={tiersData} tierKey={'tier-2'} /> : null}</TableCell>
       <TableCell className="text-rose-500 font-bold">{tiersData ? <TiersInfo tierData={tiersData} tierKey={'tier-3'} /> : null}</TableCell>
+      <TableCell className="text-rose-600 font-bold">{tiersData ? <TiersInfo tierData={tiersData} tierKey={'tier-4'} /> : null}</TableCell>
     </TableRow>
   );
 };

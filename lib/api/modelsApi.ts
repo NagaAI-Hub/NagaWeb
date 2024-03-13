@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Endpoints }  from '@/conf/cfg';
-const textModels = ["gpt-4-vision-preview", "gpt-4-1106-preview", "gpt-4-0613", "gpt-3.5-turbo-1106", "gpt-3.5-turbo-0613", "llama-2-70b-chat", "llama-2-13b-chat", "llama-2-7b-chat", "code-llama-34b", "mistral-7b", "falcon-180b-chat", "claude-2", "claude-instant", "mixtral-8x7b", "gemini-pro", "gemini-pro-vision"];
-const imageModels = ["midjourney", "sdxl", "latent-consistency-model", "kandinsky-2.2", "kandinsky-2", "kandinsky-3", "dall-e", "stable-diffusion-2.1", "stable-diffusion-1.5", "deepfloyd-if", "material-diffusion"];
-const audioModels = ["whisper-1", "m2m100-1.2b", "google-tts-1"];
-const embeddingModels = ["text-embedding-ada-002", "bge-base-en-v1.5", "bge-large-en-v1.5"];
-const moderationModels = ["text-moderation-stable", "text-moderation-latest"];
+const textModels = ["gpt-4-vision-preview", "MISTRAL-LARGE-2402", "GPT-4-0125-PREVIEW", "CLAUDE-2.1", "CLAUDE-3-OPUS-20240229", "CLAUDE-3-SONNET-20240229", "MISTRAL-SMALL-2402", "GPT-3.5-TURBO-0125", "MISTRAL-NEXT", "gpt-4-1106-preview", "gpt-4-0613", "gpt-3.5-turbo-1106", "gpt-3.5-turbo-0613", "llama-2-70b-chat", "llama-2-13b-chat", "llama-2-7b-chat", "code-llama-34b", "mistral-7b", "falcon-180b-chat", "claude-2", "claude-instant", "mixtral-8x7b", "gemini-pro", "gemini-pro-vision"].map(name => name.toLowerCase());
+const imageModels = ["midjourney", "sdxl", "latent-consistency-model", "kandinsky-2.2", "kandinsky-2", "PLAYGROUND-V2.5", "DALL-E-3", "kandinsky-3", "dall-e", "stable-diffusion-2.1", "stable-diffusion-1.5", "deepfloyd-if", "material-diffusion"].map(name => name.toLowerCase());
+const audioModels = ["whisper-1", "m2m100-1.2b", "google-tts-1", "WHISPER-LARGE-V3", "XTTS-V2", "BARK"].map(name => name.toLowerCase());
+const embeddingModels = ["text-embedding-ada-002", "bge-base-en-v1.5", "bge-large-en-v1.5", "TEXT-EMBEDDING-3-SMALL", "TEXT-EMBEDDING-3-LARGE"].map(name => name.toLowerCase());
+const moderationModels = ["text-moderation-stable", "text-moderation-latest"].map(name => name.toLowerCase());
 const modelTypeMap = Object.fromEntries([
   ...textModels.map(id => [id, "Text"]),
   ...imageModels.map(id => [id, "Image"]),
