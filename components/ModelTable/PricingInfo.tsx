@@ -10,9 +10,10 @@ interface PricingInfoProps {
 // Helper component or function for pricing display
 const PriceDisplay: FC<{ label: string, value: number, multiplier?: number }> = ({ label, value, multiplier = 1 }) => {
   const adjustedValue = value * multiplier;
-  // Format value as needed for currency, etc.
+  // format to truncate trailing zeros
+  const formattedValue = adjustedValue.toFixed(10).replace(/\.?0+$/, '');
   return (
-    <div className={styles.pricingblock}>{label}: {adjustedValue.toFixed(10)}</div>
+    <div className={styles.pricingblock}>{label}: {formattedValue}</div>
   );
 }
 

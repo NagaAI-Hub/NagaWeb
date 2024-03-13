@@ -38,7 +38,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
   if (!data) return <ErrorLog errorMessage={'Error loading models. Fetch incident...'} />;
 
   return (
-    <Card className="h-full overflow-auto">
+    <Card className="h-full overflow-auto scrollbar-thin scrollbar-thumb-[#262626] scrollbar-track-transparent">
       <Table>
         <TableHeader>
           <TableRow>
