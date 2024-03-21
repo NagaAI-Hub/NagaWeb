@@ -1,10 +1,11 @@
 "use client";
 import React from 'react';
-
+import { Canvas } from '@react-three/fiber';
 import Cta from './Cta';
 import {Core} from '@/conf/cfg';
 import dynamic from 'next/dynamic'
-import Promotion from './Promotion';
+import AsciiVortex from './vortex';
+import TerminalAnimation from './Terminal';
 const HeroSection: React.FC = () => {
   const DynamicGlobe = dynamic(() => import('./Globe'), {
     loading: () => <p>Loading...</p>,
@@ -20,13 +21,17 @@ const HeroSection: React.FC = () => {
           Explore the frontier of artificial intelligence with Naga. Offering stable and reliable API access to the latest in AI technology.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-        <div style={{
-    width: '100%',
-    aspectRatio: 1/.6,
+        <div
+  className="py-4"
+  style={{
     margin: 'auto',
     position: 'relative',
+    width: '700px',
+    height: '450px',
   }}>
-          <DynamicGlobe />
+          
+         <TerminalAnimation/>
+          
         </div>
         </div>
       </div>

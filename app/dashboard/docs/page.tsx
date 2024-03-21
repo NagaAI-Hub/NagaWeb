@@ -1,10 +1,7 @@
 'use client'
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
-{/* @ts-ignore */ }
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-{/* @ts-ignore */ }
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import dynamic from 'next/dynamic';
 import { Endpoints } from "@/conf/cfg";
 
 import {
@@ -17,6 +14,23 @@ import {
 import { pythonCodes, javascriptCodes } from "./codes";
 import Link from "next/link";
 
+const SyntaxHighlighter = dynamic(
+    async () => {
+        {/* @ts-ignore */ }
+        const { Prism } = await import('react-syntax-highlighter');
+        {/* @ts-ignore */ }
+        const { atomDark } = await import('react-syntax-highlighter/dist/esm/styles/prism');
+        {/* @ts-ignore */ }
+        const HighlighterComponent = ({ children, language }) => (
+            <Prism language={language} style={atomDark}>
+                {children}
+            </Prism>
+        );
+        HighlighterComponent.displayName = 'SyntaxHighlighter';
+        return HighlighterComponent;
+    },
+    { ssr: false }
+);
 interface CodeExampleProps {
     content: {
         [key: string]: {
@@ -164,28 +178,30 @@ const CodeExamples = ({ content, language }: CodeExampleProps) => (
                 <h3 className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight">
                     {value.title}
                 </h3>
-                <SyntaxHighlighter language={language} style={atomDark}>
+                {/* @ts-ignore */ }
+                <SyntaxHighlighter language={language}>
                     {value.code}
                 </SyntaxHighlighter>
             </div>
         ))}
     </TabsContent>
 );
-const Docs = () => {
-    return (
-        <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row">
-                <div className="mb-6 md:mb-0 md:pr-6 md:w-1/2">
-                    <DocumentationAlert />
-                    <DocumentationContent />
-                    <ResourceLinks links={R_Links} />
-                </div>
-                <div className="md:w-1/2">
-                    <CodeExamplesTabs />
-                </div>
+const Docs = () => (
+    <div className="container mx-auto px-4 py-8">
+        <DocumentationAlert />
+        <h1 className="my-4 scroll-m-20 text-4xl font-extrabold tracking-tight">
+            Documentation
+        </h1>
+        <div className="flex flex-col md:flex-row">
+            <div className="mb-6 md:mb-0 md:pr-6 md:w-1/2">
+                <DocumentationContent />
+                <ResourceLinks links={R_Links} />
+            </div>
+            <div className="md:w-1/2">
+                <CodeExamplesTabs />
             </div>
         </div>
-    );
-};
+    </div>
+);
 
-export default Docs
+export default Docs;
