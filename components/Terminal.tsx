@@ -93,13 +93,6 @@ const GradientText = styled.pre`
   -webkit-text-fill-color: transparent;
   animation: ${gradientAnimation} 5s linear infinite;
 
-  @media (max-width: 768px) {
-    font-size: 8px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 6px;
-  }
 `;
 
 export default TerminalAnimation;
