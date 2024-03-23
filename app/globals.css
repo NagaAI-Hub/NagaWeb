@@ -233,3 +233,29 @@
     clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
   }
 }
+@keyframes snakeMovement {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(40px) translateY(0);
+  }
+  75% {
+    transform: translateX(20px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+.ascii-art::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: headMovement 4s linear infinite;
+}

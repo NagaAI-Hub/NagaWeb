@@ -1,45 +1,91 @@
 "use client";
 import React from 'react';
-import { Canvas } from '@react-three/fiber';
+import styled from 'styled-components';
 import Cta from './Cta';
-import {Core} from '@/conf/cfg';
-import dynamic from 'next/dynamic'
-import AsciiVortex from './vortex';
+import { Core } from '@/conf/cfg';
 import TerminalAnimation from './Terminal';
-const HeroSection: React.FC = () => {
-  const DynamicGlobe = dynamic(() => import('./Globe'), {
-    loading: () => <p>Loading...</p>,
-  })
 
+const HeroSection: React.FC = () => {
   return (
-    <div className="flex flex-col text-white mt-4" style={{ backgroundImage: 'url("/patternpad.svg")' }}>
-      <div className="text-center mx-auto sm:max-w-1xl lg:max-w-2xl">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 py-4">
+    <HeroContainer>
+      <HeroContent>
+        <HeroTitle>
           Your Gateway to Cutting-Edge AI Technologies.
-        </h1>
-        <p className="mx-auto text-zinc-200 dark:text-zinc-100 md:text-xl max-w-prose">
+        </HeroTitle>
+        <HeroDescription>
           Explore the frontier of artificial intelligence with Naga. Offering stable and reliable API access to the latest in AI technology.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-        <div
-  className="py-4"
-  style={{
-    margin: 'auto',
-    position: 'relative',
-    width: '700px',
-    height: '450px',
-  }}>
-          
-         <TerminalAnimation/>
-          
-        </div>
-        </div>
-      </div>
-      <div className="text-white">
-        <Cta title="Reach out and let's start a conversation." btnText='Join Discord' btnLink={Core.discord}/>
-      </div>
-    </div>
+        </HeroDescription>
+        <TerminalContainer>
+          <TerminalAnimation />
+        </TerminalContainer>
+      </HeroContent>
+      <CtaContainer>
+        <Cta title="Reach out and let's start a conversation." btnText='Join Discord' btnLink={Core.discord} />
+      </CtaContainer>
+    </HeroContainer>
   );
 };
+
+const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+  background-image: url("/patternpad.svg");
+`;
+
+const HeroContent = styled.div`
+  margin: 0 auto;
+  max-width: 36rem;
+
+  @media (min-width: 1024px) {
+    max-width: 48rem;
+  }
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, white, #71717a);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+`;
+
+const HeroDescription = styled.p`
+  margin: 0 auto;
+  color: #e4e4e7;
+  font-size: 1.125rem;
+  max-width: 65ch;
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+`;
+
+const TerminalContainer = styled.div`
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  
+  @media (min-width: 640px) {
+    width: 700px;
+    height: 450px;
+    padding-bottom: 0;
+  }
+`;
+
+const CtaContainer = styled.div`
+  color: white;
+  text-align:left;
+`;
 
 export default HeroSection;
