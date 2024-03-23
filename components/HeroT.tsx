@@ -85,6 +85,7 @@ const TerminalContainer = styled.div`
 
 const CtaContainer = styled.div`
   color: white;
+  text-align:left;
 `;
 
 export default HeroSection;
