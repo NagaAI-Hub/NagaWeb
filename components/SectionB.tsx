@@ -26,19 +26,19 @@ const SectionB: React.FC = () => {
   return (
     <div className="grid md:grid-cols-3 gap-4">
       <FeatureCard
-        icon="Fingerprint"
-        title="Fingerprint free."
-        description="No request history is stored—your interactions remain confidential."
+        icon="Lock"
+        title="Secure and Confidential"
+        description="Your data is protected with state-of-the-art security measures. No request history is stored, ensuring your interactions remain private."
       />
       <FeatureCard
-        icon="Activity"
-        title="As stable as it gets."
-        description="Stabile and reliable API access to the latest in AI technology."
+        icon="Zap"
+        title="Reliable and Cutting-Edge"
+        description="Experience unparalleled stability and performance with NagaAI's advanced infrastructure, delivering reliable access to the latest breakthroughs in artificial intelligence."
       />
       <FeatureCard
-        icon="Crown"
-        title="You get the toys first."
-        description="Gain early access to the latest developments in AI technology and stay ahead of the competition."
+        icon="Rocket"
+        title="Be the First to Innovate"
+        description="Stay ahead of the curve with priority access to cutting-edge AI technologies. Leverage the latest advancements to drive innovation and gain a competitive edge."
       />
     </div>
   );

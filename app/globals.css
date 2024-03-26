@@ -259,3 +259,93 @@
   bottom: 0;
   animation: headMovement 4s linear infinite;
 }
+.HeroTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, white, #71717a);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+}
+.HeroContent {
+  margin: 0 auto;
+  max-width: 36rem;
+
+  @media (min-width: 1024px) {
+    max-width: 48rem;
+  }
+}
+.HeroContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+  background-image: url("/patternpad.svg");
+}
+.HeroDescription {
+  margin: 0 auto;
+  color: #e4e4e7;
+  font-size: 1.125rem;
+  max-width: 65ch;
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+.TerminalContainer {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  height: 450px;
+  
+  @media (min-width: 640px) {
+    width: 700px;
+  }
+}
+.CtaContainer {
+  color: white;
+  text-align: left;
+}
+.GradientText {
+  background-image: linear-gradient(to right, #ff00ff, #00ffff, #ff00ff);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 5s linear infinite;
+
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.ResponsiveFont {
+   
+  @media (max-width: 768px) {
+    font-size: 6px !important;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 8px !important;
+  }
+  @media (max-width: 375px) {
+    font-size: 6px !important;
+  }
+}

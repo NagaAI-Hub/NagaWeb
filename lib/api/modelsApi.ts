@@ -28,7 +28,7 @@ interface Pricing extends UnitCosts {}
 interface Model {
   id: string;
   object: string;
-  proxy_to?: string;
+  points_to?: string;
   limiter?: string;
   pricing?: Pricing;
   max_images?: number;

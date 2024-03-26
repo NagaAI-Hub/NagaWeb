@@ -2,15 +2,14 @@ export const Core = {
     // Service Name
     name: 'NagaAI',
     // Service Version
-    version: '3.6.7 March',
+    version: '3.7.0 26032024',
     // Service Title
-    title: 'NagaAI - Your Gateway to Cutting-Edge AI Technologies',
+    title: 'NagaAI - Cutting-Edge AI Solutions for Developers & Businesses',
     // Service Description
-    description: `Explore the frontier of artificial intelligence with NagaAI. Offering stable and reliable API access to the latest in AI technology, NagaAI empowers developers and businesses to harness the power of cutting-edge and bleeding-edge AI solutions. Elevate your projects with next-gen AI capabilities.`,
+    description: `Unlock the power of artificial intelligence with NagaAI's reliable API access to the latest in AI technology. Empower your projects with next-gen AI capabilities including advanced language models, image generation, text-to-speech, transcription, translation and moderation. Elevate your applications with NagaAI.`,
     // Service Discord
     discord: 'https://discord.naga.ac/',
-
-}
+    }
 const BASE_URL = 'https://api.naga.ac/v1/';
 
 export const Endpoints = {

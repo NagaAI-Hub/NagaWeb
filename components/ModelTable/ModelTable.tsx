@@ -4,7 +4,6 @@ import { TableRow, TableBody, TableCell, Table, TableHead, TableHeader } from ".
 import { Card } from "../ui/card";
 import ErrorLog from "../Err";
 import ModelRow from './ModelRow'; // New component for table rows
-import { Zap } from 'lucide-react';
 export interface Pricing {
   per_input_token?: number;
   per_output_token?: number;
@@ -27,7 +26,7 @@ export interface Model {
   modelType: string;
   pricing: Pricing | null;
   tiersData: TierData | null;
-  proxy_to?: string;
+  points_to?: string;
 }
 
 interface ModelTableProps {
@@ -60,7 +59,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((item) => item.proxy_to ? null : <ModelRow key={item.id} model={item} />)}
+          {data.map((item) => item.points_to ? null : <ModelRow key={item.id} model={item} />)}
         </TableBody>
       </Table>
     </Card>
