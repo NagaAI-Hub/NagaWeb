@@ -27,7 +27,7 @@ Expect The Serpent. Expect The Naga. Expect The Unexpected.
       className={`terminal text-white p-4 rounded-lg font-mono overflow-hidden}}
     }`} style={{ width: '100%', height: '100%' }}
     >
-      <div className='ResponsiveFont'><div className='GradientText'>{text}</div></div>
+      <div className='ResponsiveFont'><div className='GradientText'><pre>{text}</pre></div></div>
     </div>
   )
 };
