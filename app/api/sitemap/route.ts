@@ -2,11 +2,7 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import { Readable } from "stream";
 import { NextRequest, NextResponse } from "next/server";
 
-interface SitemapLink {
-  url: string;
-  changefreq?: string;
-  priority?: number;
-}
+
 
 export async function GET(request: NextRequest) {
   // An array with your pages

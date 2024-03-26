@@ -24,7 +24,8 @@ const SyntaxHighlighter = dynamic(
     {
       /* @ts-ignore */
     }
-    const HighlighterComponent = ({ children, language }) => (
+    const HighlighterComponent = ({ children, language }: any) => (
+      /* @ts-ignore */
       <Prism language={language} style={atomDark}>
         {children}
       </Prism>
@@ -169,7 +170,7 @@ const ResourceLinks = ({ links }: ResourceLinksProps) => (
     <p className="text-muted-foreground">All of Naga Endpoints as of today:</p>
     {Object.entries(Endpoints)
       .sort(([, a], [, b]) => a.length - b.length)
-      .map(([key, val], index) => (
+      .map(([key, val]) => (
         <div key={key}>
           <Link href={val}>
             <span className="text-rose-500">{val}</span>
