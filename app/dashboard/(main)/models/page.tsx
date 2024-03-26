@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Loading from "@/components/Loader";
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
-import { useFetchModelsQuery } from "@/lib/api/modelsApi";
+import { useGetModelsQuery } from "@/lib/api/modelsApi";
 
 const ErrorLog = dynamic(() => import("@/components/Err"), {
   loading: () => <Loading />,
@@ -14,7 +14,7 @@ const ModelTable = dynamic(() => import("@/components/ModelTable/ModelTable"), {
 });
 
 const Models = () => {
-  const { data: modelsData, isLoading: isLoadingModels, isError: isErrorModels } = useFetchModelsQuery();
+  const { data: modelsData, isLoading: isLoadingModels, isError: isErrorModels } = useGetModelsQuery();
   const { data: limitsData, isLoading: isLoadingLimits, isError: isErrorLimits } = useFetchLimitsQuery();
 
   if (isLoadingModels || isLoadingLimits) {

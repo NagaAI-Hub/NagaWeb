@@ -1,7 +1,14 @@
-import { Home, Settings2, HeartPulse, MessageSquare, LayoutGrid, ScrollText } from "lucide-react";
+import {
+  Home,
+  Settings2,
+  HeartPulse,
+  MessageSquare,
+  LayoutGrid,
+  ScrollText,
+} from "lucide-react";
 import { Core } from "./cfg";
 
-type LayoutContext = 'dashboard' | 'landing';
+type LayoutContext = "dashboard" | "landing";
 
 export interface NavItem {
   href: string;
@@ -12,14 +19,39 @@ export interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { href: '/', icon: Home, label: 'Home', context: ['dashboard', 'landing'] },
-  { href: '/dashboard', icon: LayoutGrid, label: 'Playground', context: ['dashboard'] },
-  { href: '/dashboard/models', icon: Settings2, label: 'Models', context: ['dashboard', 'landing'] },
-  { href: '/dashboard/docs', icon: ScrollText, label: 'Docs & Examples', context: ['dashboard', 'landing'] },
-  { href: Core.discord, icon: MessageSquare, label: 'Discord', context: ['dashboard', 'landing'] },
-  { href: 'https://chat.naga.ac/', icon: HeartPulse, label: 'LibreChat', context: ['landing'] },
+  { href: "/", icon: Home, label: "Home", context: ["dashboard", "landing"] },
+  {
+    href: "/dashboard",
+    icon: LayoutGrid,
+    label: "Playground",
+    context: ["dashboard"],
+  },
+  {
+    href: "/dashboard/models",
+    icon: Settings2,
+    label: "Models",
+    context: ["dashboard", "landing"],
+  },
+  {
+    href: "/dashboard/docs",
+    icon: ScrollText,
+    label: "Docs & Examples",
+    context: ["dashboard", "landing"],
+  },
+  {
+    href: Core.discord,
+    icon: MessageSquare,
+    label: "Discord",
+    context: ["dashboard", "landing"],
+  },
+  {
+    href: "https://chat.naga.ac/",
+    icon: HeartPulse,
+    label: "LibreChat",
+    context: ["landing"],
+  },
 ];
 
 export function getNavItems(context: LayoutContext): NavItem[] {
-  return navItems.filter(item => item.context.includes(context));
+  return navItems.filter((item) => item.context.includes(context));
 }

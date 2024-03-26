@@ -25,10 +25,9 @@ const BadgeWrapper: React.FC<BadgeWrapperProps> = ({ label, badgeText }) => (
 
 const DashboardNav: React.FC<DashboardNavProps> = ({ navItems }) => {
   const { getBadgeText } = useDashboardNav();
-
+  
   const determineBadgeText = (item: NavItem) => 
     item.badge || (item.label === 'Models' ? getBadgeText(item.label) : undefined);
-
   return (
     <nav className="border-r dark:border-neutral-800 bg-gray-100/40 dark:bg-neutral-900/20 overflow-auto">
       <div className="flex flex-col gap-2 h-full justify-between">

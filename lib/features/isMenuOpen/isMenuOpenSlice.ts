@@ -1,5 +1,5 @@
 // isMenuOpenSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IsMenuOpenState {
   value: boolean;
@@ -10,7 +10,7 @@ const initialState: IsMenuOpenState = {
 };
 
 export const isMenuOpenSlice = createSlice({
-  name: 'isMenuOpen',
+  name: "isMenuOpen",
   initialState,
   reducers: {
     toggleMenu: (state) => {

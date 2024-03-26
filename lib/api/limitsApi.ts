@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Endpoints } from '@/conf/cfg';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Endpoints } from "@/conf/cfg";
 
 interface LimitTier {
   [tierName: string]: [number, string][];
@@ -12,11 +12,11 @@ interface Limit {
 }
 
 export const limitsApi = createApi({
-  reducerPath: 'limitsApi',
+  reducerPath: "limitsApi",
   baseQuery: fetchBaseQuery({ baseUrl: Endpoints.NAGA_BASE_URL }),
   endpoints: (builder) => ({
     fetchLimits: builder.query<Limit[], void>({
-      query: () => 'limits',
+      query: () => "limits",
       transformResponse: (response: { data: Limit[] }) => response.data,
     }),
   }),
