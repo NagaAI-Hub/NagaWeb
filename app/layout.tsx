@@ -4,10 +4,11 @@ import { ThemeProvider } from '@/components/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 import { Core } from '@/conf/cfg'
 import StoreProvider from './StoreProvider'
+
 export const metadata: Metadata = {
-  title: Core.title,
-  description: Core.description,
-  keywords: 'AI technology services, advanced AI solutions, AI for developers, AI for businesses, NagaAI, AI APIs, cutting-edge AI, bleeding-edge AI, gpts, chatgpt, gpt4, AI',
+  title: 'NagaAI - The Leader in Cutting-Edge AI Solutions',
+  description: 'Unlock advanced artificial intelligence capabilities with NagaAI. Leverage powerful APIs for GPT-4 language models, image generation, text-to-speech, transcription, translation, moderation & more. Elevate your applications with bleeding-edge AI from the industry leader.',
+  keywords: 'AI APIs, GPT-4, Claude 3, ChatGPT, image generation, text-to-speech, speech-to-text, translation, moderation, advanced AI, cutting-edge AI, artificial intelligence solutions, AI for developers, AI for businesses, NagaAI',
   metadataBase: typeof process.env.NEXT_PUBLIC_WEB_URL === 'string' ? new URL(process.env.NEXT_PUBLIC_WEB_URL) : null,
   openGraph: {
     type: 'website',
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
         url: `${process.env.NEXT_PUBLIC_WEB_URL}logos/naga.png`,
         width: 600,
         height: 600,
+
       }
     ]
   }
