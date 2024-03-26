@@ -1,5 +1,4 @@
-
-import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert"
+import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert";
 
 export default function Promotion() {
   return (
@@ -7,12 +6,18 @@ export default function Promotion() {
       <div className="flex items-center">
         <MegaphoneIcon className="h-6 w-6 text-white mr-2" />
         <div>
-          <AlertTitle className="text-white font-bold text-sm">Happy New Year holidays, friends!</AlertTitle>
-          <AlertDescription className="text-white text-sm">Donate to any charity of your choice, and we will magnify your impact by doubling the donated amount in the form of paid API credits!</AlertDescription>
+          <AlertTitle className="text-white font-bold text-sm">
+            Happy New Year holidays, friends!
+          </AlertTitle>
+          <AlertDescription className="text-white text-sm">
+            Donate to any charity of your choice, and we will magnify your
+            impact by doubling the donated amount in the form of paid API
+            credits!
+          </AlertDescription>
         </div>
       </div>
     </Alert>
-  )
+  );
 }
 
 function MegaphoneIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -32,7 +37,5 @@ function MegaphoneIcon(props: React.SVGProps<SVGSVGElement>) {
       <path d="m3 11 18-5v12L3 14v-3z" />
       <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
     </svg>
-  )
+  );
 }
-
-

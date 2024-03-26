@@ -1,15 +1,19 @@
-import React from 'react';
-import { Card } from './ui/card';
-import * as Icons from 'lucide-react';
+import React from "react";
+import { Card } from "./ui/card";
+import * as Icons from "lucide-react";
 
 type FeatureCardProps = {
   title: string;
   description: string;
   icon: keyof typeof Icons;
 };
-type IconProps = React.ComponentProps<'svg'> & { size?: number };
+type IconProps = React.ComponentProps<"svg"> & { size?: number };
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  title,
+  description,
+  icon,
+}) => {
   const IconComponent = Icons[icon] as React.FC<IconProps>;
   return (
     <Card className="p-6 text-center hover:border-blue-500 transition-colors delay-50">
