@@ -1,5 +1,5 @@
 // features/screenSize/screenSizeSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ScreenSizeState {
   isMobile: boolean;
@@ -10,7 +10,7 @@ const initialState: ScreenSizeState = {
 };
 
 const screenSizeSlice = createSlice({
-  name: 'screenSize',
+  name: "screenSize",
   initialState,
   reducers: {
     setMobile: (state, action: PayloadAction<boolean>) => {

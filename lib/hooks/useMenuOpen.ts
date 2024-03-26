@@ -1,6 +1,9 @@
 // hooks/useMenuOpen.ts
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { toggleMenu, setMenuOpen } from '@/lib/features/isMenuOpen/isMenuOpenSlice';
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import {
+  toggleMenu,
+  setMenuOpen,
+} from "@/lib/features/isMenuOpen/isMenuOpenSlice";
 
 export default function useMenuOpen() {
   const dispatch = useAppDispatch();
@@ -15,4 +18,4 @@ export default function useMenuOpen() {
   };
 
   return { isMenuOpen, toggle, setOpen };
-};
+}
