@@ -1,8 +1,8 @@
  //components\dashboard\useDashboardNav.ts
-import { useFetchModelsQuery } from '@/lib/api/modelsApi';
+import { useGetModelsQuery } from '@/lib/api/modelsApi';
 
 export const useDashboardNav = () => {
-  const { data: models = [], isLoading, isError } = useFetchModelsQuery();
+  const { data: models = [], isLoading, isError } = useGetModelsQuery();
   const getBadgeText = (label: string) => {
     if (isLoading) return 'Loading';
     if (!models || isError) return 'Error';
