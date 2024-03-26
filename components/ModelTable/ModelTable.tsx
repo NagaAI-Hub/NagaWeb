@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import {
   TableRow,
   TableBody,
-  TableCell,
   Table,
   TableHead,
   TableHeader,
