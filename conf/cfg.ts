@@ -11,7 +11,8 @@ export const Core = {
   discord: "https://discord.naga.ac/",
 };
 const BASE_URL = "https://api.naga.ac/v1/";
-
+//Global Cache 30 mins
+export const keepCacheFor: number = 60 * 30;
 export const Endpoints = {
   NAGA_BASE_URL: BASE_URL,
   NAGA_MODEL_LIST: `${BASE_URL}models`,
