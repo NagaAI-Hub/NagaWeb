@@ -1,6 +1,12 @@
 // ModelTableSkeleton.tsx
 import React, { FC } from "react";
-import { TableRow, TableBody, Table, TableHead, TableHeader } from "../ui/table";
+import {
+  TableRow,
+  TableBody,
+  Table,
+  TableHead,
+  TableHeader,
+} from "../ui/table";
 import { Card } from "../ui/card";
 
 const ModelTableSkeleton: FC = () => {
@@ -8,7 +14,6 @@ const ModelTableSkeleton: FC = () => {
     <Card className="h-full overflow-auto scrollbar-thin scrollbar-thumb-[#262626] scrollbar-track-transparent">
       <Table>
         <TableHeader>
-            
           <TableRow>
             <TableHead className="w-[100px]">
               <div className="h-4 bg-gray-200 rounded-md animate-pulse"></div>
