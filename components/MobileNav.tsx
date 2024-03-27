@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useMenuOpen } from "@/lib/hooks/index";
 import { NavItem } from "@/conf/navItems";
-
+// To fully revamp, refactor this shit.
 type MobileNavProps = {
   navItems: NavItem[];
 };

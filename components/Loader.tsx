@@ -1,5 +1,5 @@
 "use client";
-
+// Deprecation!
 import { useState, useEffect } from "react";
 
 const Loading = () => {
