@@ -4,13 +4,13 @@ import dynamic from "next/dynamic";
 import Loading from "@/components/Loader";
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { useGetModelsQuery } from "@/lib/api/modelsApi";
-
+import ModelTableSkeleton from "@/components/ModelTable/ModelTableSkeleton";
 const ErrorLog = dynamic(() => import("@/components/Err"), {
-  loading: () => <Loading />,
+  loading: () => <ModelTableSkeleton/>,
 });
 
 const ModelTable = dynamic(() => import("@/components/ModelTable/ModelTable"), {
-  loading: () => <Loading />,
+  loading: () => <ModelTableSkeleton/>,
 });
 
 const Models = () => {
@@ -26,7 +26,7 @@ const Models = () => {
   } = useFetchLimitsQuery();
 
   if (isLoadingModels || isLoadingLimits) {
-    return <Loading />;
+    return <ModelTableSkeleton/>;
   }
 
   if (isErrorModels || isErrorLimits) {
@@ -63,6 +63,7 @@ const Models = () => {
       <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-1 sm:grid-cols-1 w-full h-screen overflow-auto">
         {/* @ts-ignore */}
         <ModelTable data={combinedData} />
+        
       </div>
     </Suspense>
   );
