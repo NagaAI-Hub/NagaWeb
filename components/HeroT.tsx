@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
           technology, including GPT-4 language models, image generation,
           text-to-speech, transcription, translation, moderation and more.
         </div>
-        <div className="TerminalContainer">
+        <div className="container">
           <TerminalAnimation />
         </div>
       </div>

@@ -337,9 +337,12 @@
   }
 }
 .ResponsiveFont {
+  @media (max-width: 853px) {
+    font-size: 11px !important;
+  }
    
   @media (max-width: 768px) {
-    font-size: 6px !important;
+    font-size: 12px !important;
   }
 
   @media (max-width: 480px) {
