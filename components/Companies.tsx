@@ -39,7 +39,9 @@ const InfiniteLooper: React.FC<InfiniteLooperProps> = ({
     const instanceWidth = width / currentInnerRef.children.length;
 
     if (widthDeficit) {
-      setLooperInstances(looperInstances + Math.ceil(widthDeficit / instanceWidth) + 1);
+      setLooperInstances(
+        looperInstances + Math.ceil(widthDeficit / instanceWidth) + 1,
+      );
     }
 
     resetAnimation();
@@ -84,11 +86,17 @@ const ModelCompanies: React.FC<ModelCompaniesProps> = ({ images }) => (
   <InfiniteLooper speed={10} direction="right">
     <div className="contentBlock contentBlock--two">
       {images.map((image, index) => (
-        <Image style={{color:"white"}} className="p-2" src={`/logos/${image}`} width={120} height={100} key={index} alt="image" />
+        <Image
+          style={{ color: "white" }}
+          className="p-2"
+          src={`/logos/${image}`}
+          width={120}
+          height={100}
+          key={index}
+          alt="image"
+        />
       ))}
-      
     </div>
-    
   </InfiniteLooper>
 );
 

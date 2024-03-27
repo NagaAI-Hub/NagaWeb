@@ -1,7 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
 const TerminalAnimation: React.FC = () => {
-
   const text = `
   ⠀     ⢀⣠⣤⣶⣶⣿⣿⣿⣿⣿⣷⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⣀⣤⣶⣶⡿⠿⢿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠋⠉⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣷⣄⠀⠀⠀⠀⠀
@@ -22,16 +19,14 @@ Expect The Serpent. Expect The Naga. Expect The Unexpected.
 `;
 
   return (
-
-    <div
-      className={`terminal text-white p-4 rounded-lg font-mono overflow-hidden}}
-    }`} style={{ width: '100%', height: '100%' }}
-    >
-      <div className='ResponsiveFont'><div className='GradientText'><pre>{text}</pre></div></div>
+    <div className="text-white py-4 font-mono">
+      <div className="ResponsiveFont">
+        <div className="GradientText">
+          <pre>{text}</pre>
+        </div>
+      </div>
     </div>
-  )
+  );
 };
-
-
 
 export default TerminalAnimation;

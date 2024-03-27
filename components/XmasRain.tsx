@@ -1,7 +1,7 @@
 "use client";
 
-import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 interface Image {
   id: number;
@@ -21,7 +21,9 @@ const XmasRain = () => {
     return {
       id: Math.random(),
       src: `/xmas/image${Math.floor(Math.random() * imageCount) + 1}.webp`,
-      x: Math.random() * (containerRef.current?.offsetWidth || window.innerWidth),
+      x:
+        Math.random() *
+        (containerRef.current?.offsetWidth || window.innerWidth),
       y: -100, // Adjusted for larger image size
       speed: Math.random() * 3 + 1,
       wind: Math.random() * 2 - 1,
@@ -29,7 +31,7 @@ const XmasRain = () => {
   };
 
   const addImage = () => {
-    setImages(currentImages => [...currentImages, createImage()]);
+    setImages((currentImages) => [...currentImages, createImage()]);
   };
 
   useEffect(() => {
@@ -39,11 +41,19 @@ const XmasRain = () => {
 
   useEffect(() => {
     const updatePosition = () => {
-      setImages(currentImages => currentImages.map(img => ({
-        ...img,
-        y: img.y + img.speed,
-        x: img.x + img.wind * img.speed,
-      })).filter(img => img.y < (containerRef.current?.offsetHeight || window.innerHeight) + 100));
+      setImages((currentImages) =>
+        currentImages
+          .map((img) => ({
+            ...img,
+            y: img.y + img.speed,
+            x: img.x + img.wind * img.speed,
+          }))
+          .filter(
+            (img) =>
+              img.y <
+              (containerRef.current?.offsetHeight || window.innerHeight) + 100,
+          ),
+      );
 
       requestAnimationFrame(updatePosition);
     };
@@ -52,8 +62,12 @@ const XmasRain = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="xmas-rain-container" style={{ position: 'relative'}}>
-      {images.map(img => (
+    <div
+      ref={containerRef}
+      className="xmas-rain-container"
+      style={{ position: "relative" }}
+    >
+      {images.map((img) => (
         <Image
           key={img.id}
           src={img.src}
@@ -61,11 +75,11 @@ const XmasRain = () => {
           height={50}
           alt=""
           style={{
-            position: 'absolute',
+            position: "absolute",
             left: `${img.x}px`,
             top: `${img.y}px`,
-            maxWidth: '50px', // Adjust size as needed
-            userSelect: 'none',
+            maxWidth: "50px", // Adjust size as needed
+            userSelect: "none",
           }}
         />
       ))}

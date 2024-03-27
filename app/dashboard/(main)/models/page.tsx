@@ -4,25 +4,35 @@ import dynamic from "next/dynamic";
 import Loading from "@/components/Loader";
 import { useFetchLimitsQuery } from "@/lib/api/limitsApi";
 import { useGetModelsQuery } from "@/lib/api/modelsApi";
-
+import ModelTableSkeleton from "@/components/ModelTable/ModelTableSkeleton";
 const ErrorLog = dynamic(() => import("@/components/Err"), {
-  loading: () => <Loading />,
+  loading: () => <ModelTableSkeleton />,
 });
 
 const ModelTable = dynamic(() => import("@/components/ModelTable/ModelTable"), {
-  loading: () => <Loading />,
+  loading: () => <ModelTableSkeleton />,
 });
 
 const Models = () => {
-  const { data: modelsData, isLoading: isLoadingModels, isError: isErrorModels } = useGetModelsQuery();
-  const { data: limitsData, isLoading: isLoadingLimits, isError: isErrorLimits } = useFetchLimitsQuery();
+  const {
+    data: modelsData,
+    isLoading: isLoadingModels,
+    isError: isErrorModels,
+  } = useGetModelsQuery();
+  const {
+    data: limitsData,
+    isLoading: isLoadingLimits,
+    isError: isErrorLimits,
+  } = useFetchLimitsQuery();
 
   if (isLoadingModels || isLoadingLimits) {
-    return <Loading />;
+    return <ModelTableSkeleton />;
   }
 
   if (isErrorModels || isErrorLimits) {
-    return <ErrorLog errorMessage="Error loading models. Please report this incident with console print." />;
+    return (
+      <ErrorLog errorMessage="Error loading models. Please report this incident with console print." />
+    );
   }
 
   // Combine models and limits data
@@ -33,10 +43,15 @@ const Models = () => {
       return { ...model, tiersData: {} };
     }
 
-    const tiersData = Object.entries(modelLimit.tiers).reduce((acc, [tierName, limits]) => {
-      const limitString = limits.map(([value, unit]) => `${value} ${unit}`).join(", ");
-      return { ...acc, [tierName]: limitString };
-    }, {});
+    const tiersData = Object.entries(modelLimit.tiers).reduce(
+      (acc, [tierName, limits]) => {
+        const limitString = limits
+          .map(([value, unit]) => `${value} ${unit}`)
+          .join(", ");
+        return { ...acc, [tierName]: limitString };
+      },
+      {},
+    );
 
     return { ...model, tiersData };
   });

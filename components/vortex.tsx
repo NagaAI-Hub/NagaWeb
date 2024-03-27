@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 const AsciiVortex: React.FC = () => {
   const vortexRef = useRef<THREE.Points>(null);
@@ -9,19 +9,19 @@ const AsciiVortex: React.FC = () => {
     if (!vortexRef.current) return;
 
     const fontSize = 12;
-    const fontFamily = 'monospace';
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    const fontFamily = "monospace";
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
     if (!context) return;
 
     context.font = `${fontSize}px ${fontFamily}`;
 
-    const text = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const text = "abcdefghijklmnopqrstuvwxyz0123456789";
     const textWidth = context.measureText(text).width;
     canvas.width = textWidth;
     canvas.height = fontSize;
 
-    context.fillStyle = 'white';
+    context.fillStyle = "white";
     context.font = `${fontSize}px ${fontFamily}`;
     context.fillText(text, 0, fontSize);
 
@@ -49,21 +49,36 @@ const AsciiVortex: React.FC = () => {
     for (let i = 0; i < numPoints; i++) {
       const distance = Math.random() * radius;
       const angle = (i % arms) * ((Math.PI * 2) / arms) + distance * spin;
-      const randomX = Math.pow(Math.random(), randomness) * (Math.random() < 0.5 ? 1 : -1) * radius * 0.2;
-      const randomY = Math.pow(Math.random(), randomness) * (Math.random() < 0.5 ? 1 : -1) * radius * 0.2;
-      const randomZ = Math.pow(Math.random(), randomness) * (Math.random() < 0.5 ? 1 : -1) * radius * 0.2;
+      const randomX =
+        Math.pow(Math.random(), randomness) *
+        (Math.random() < 0.5 ? 1 : -1) *
+        radius *
+        0.2;
+      const randomY =
+        Math.pow(Math.random(), randomness) *
+        (Math.random() < 0.5 ? 1 : -1) *
+        radius *
+        0.2;
+      const randomZ =
+        Math.pow(Math.random(), randomness) *
+        (Math.random() < 0.5 ? 1 : -1) *
+        radius *
+        0.2;
 
       positions.push(
         Math.cos(angle) * distance + randomX,
         Math.sin(angle) * distance + randomY,
-        randomZ
+        randomZ,
       );
 
       colors.push(1, 1, 1);
     }
 
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3),
+    );
+    geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
 
     vortexRef.current.geometry = geometry;
     vortexRef.current.material = material;

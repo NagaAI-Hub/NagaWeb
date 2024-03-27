@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Endpoints } from "@/conf/cfg";
-
+import { keepCacheFor } from "@/conf/cfg";
 const textModels = [
   "gpt-4-vision-preview",
   "llama-2-70b-chat",
@@ -99,7 +99,7 @@ interface Model {
   allowed_for?: string[];
   type: string;
 }
-
+//27.03 Caching for Query
 export const modelsApi = createApi({
   reducerPath: "modelsApi",
   baseQuery: fetchBaseQuery({ baseUrl: Endpoints.NAGA_BASE_URL }),
@@ -114,6 +114,7 @@ export const modelsApi = createApi({
             modelType: modelTypeMap[model.id.toLowerCase()] || "Unknown",
           }));
       },
+      keepUnusedDataFor: keepCacheFor, // Adjust the cache duration as needed (in seconds)
     }),
   }),
 });
