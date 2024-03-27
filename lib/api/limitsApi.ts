@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Endpoints } from "@/conf/cfg";
-
+import { keepCacheFor } from "@/conf/cfg";
 interface LimitTier {
   [tierName: string]: [number, string][];
 }
@@ -20,6 +20,7 @@ export const limitsApi = createApi({
       transformResponse: (response: { data: Limit[] }) => response.data,
     }),
   }),
+  keepUnusedDataFor: keepCacheFor,
 });
 
 export const { useFetchLimitsQuery } = limitsApi;

@@ -114,7 +114,7 @@ export const modelsApi = createApi({
             modelType: modelTypeMap[model.id.toLowerCase()] || "Unknown",
           }));
       },
-      keepUnusedDataFor: keepCacheFor , // Adjust the cache duration as needed (in seconds)
+      keepUnusedDataFor: keepCacheFor, // Adjust the cache duration as needed (in seconds)
     }),
   }),
 });

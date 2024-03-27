@@ -2,7 +2,7 @@ export const Core = {
   // Service Name
   name: "NagaAI",
   // Service Version
-  version: "3.7.0 26032024",
+  version: "3.7.0 27032024",
   // Service Title
   title: "NagaAI - Cutting-Edge AI Solutions for Developers & Businesses",
   // Service Description
