@@ -42,10 +42,10 @@ interface ModelTableProps {
 }
 
 const ModelTable: FC<ModelTableProps> = ({ data }) => {
-  const [sortColumn, setSortColumn] = useState<keyof Model | null>(null);
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  const [modelTypeFilter, setModelTypeFilter] = useState<string | null>(null);
-  const [freeFilter, setFreeFilter] = useState<boolean>(false);
+	const [sortColumn, setSortColumn] = useState<keyof Model | null>(null);
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+	const [modelTypeFilter, setModelTypeFilter] = useState<string>("");
+	const [freeFilter, setFreeFilter] = useState<boolean>(false);
 
   const handleSort = (column: keyof Model) => {
     if (sortColumn === column) {
@@ -90,27 +90,28 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
   return (
     <Card className="h-full overflow-auto scrollbar-thin scrollbar-thumb-[#262626] scrollbar-track-transparent">
       <div className="m-4 flex items-center space-x-4">
-  <ToggleGroup
-    type="single"
-    value={modelTypeFilter}
-    onValueChange={(value) => setModelTypeFilter(value)}
-    className="flex space-x-2"
-  >
-    <ToggleGroupItem variant="outline" value="Text">Text</ToggleGroupItem>
-    <ToggleGroupItem variant="outline" value="Image">Image</ToggleGroupItem>
-    <ToggleGroupItem variant="outline" value="Embedding">Embedding</ToggleGroupItem>
-    <ToggleGroupItem variant="outline" value="Moderation">Moderation</ToggleGroupItem>
-    <ToggleGroupItem variant="outline" value="Audio">Audio</ToggleGroupItem>
-  </ToggleGroup>
-  <ToggleGroup
-    type="single"
-	variant="outline"
-    value={freeFilter ? "free" : null}
-    onValueChange={(value) => setFreeFilter(value === "free")}
-    className="flex space-x-2"
-  >
-    <ToggleGroupItem value="free">Free Limit</ToggleGroupItem>
-  </ToggleGroup>
+        <ToggleGroup
+          type="single"
+          value={modelTypeFilter}
+          onValueChange={(value) => setModelTypeFilter(value)}
+          className="flex space-x-2"
+        >
+          <ToggleGroupItem variant="outline" value="Text">Text</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Image">Image</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Embedding">Embedding</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Moderation">Moderation</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Audio">Audio</ToggleGroupItem>
+        </ToggleGroup>
+        <ToggleGroup
+          type="single"
+          variant="outline"
+          value={freeFilter ? "free" : ""}
+          onValueChange={(value) => setFreeFilter(value === "free")}
+          className="flex space-x-2"
+        >
+          <ToggleGroupItem value="free">Free Limit</ToggleGroupItem>
+        </ToggleGroup>
+      
 </div>
       <Table>
         <TableHeader>
