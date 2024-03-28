@@ -5,7 +5,11 @@ export default async function Dashboard() {
 		<>
 			<div className="grid gap-4 grid-cols-1 w-full h-screen overflow-auto">
 				<Card>
-					<iframe className="w-full h-full" src="https://chat.naga.ac/" />
+					<iframe
+						title="Chat"
+						className="w-full h-full"
+						src="https://chat.naga.ac/"
+					/>
 				</Card>
 			</div>
 		</>

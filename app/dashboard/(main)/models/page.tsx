@@ -44,11 +44,12 @@ const Models = () => {
 		}
 
 		const tiersData = Object.entries(modelLimit.tiers).reduce(
-			(acc, [tierName, limits]) => {
+			(acc: { [key: string]: string }, [tierName, limits]) => {
 				const limitString = limits
 					.map(([value, unit]) => `${value} ${unit}`)
 					.join(", ");
-				return { ...acc, [tierName]: limitString };
+				acc[tierName] = limitString;
+				return acc;
 			},
 			{},
 		);
