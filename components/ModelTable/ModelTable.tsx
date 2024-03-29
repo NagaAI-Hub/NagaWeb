@@ -1,15 +1,17 @@
 // ModelTable.tsx
-import React, { FC } from "react";
+import React, { useState, type FC } from "react";
+import ErrorLog from "../Err";
+import { Card } from "../ui/card";
 import {
-  TableRow,
-  TableBody,
   Table,
+  TableBody,
   TableHead,
   TableHeader,
+  TableRow,
 } from "../ui/table";
-import { Card } from "../ui/card";
-import ErrorLog from "../Err";
-import ModelRow from "./ModelRow"; // New component for table rows
+import ModelRow from "./ModelRow";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+
 export interface Pricing {
   per_input_token?: number;
   per_output_token?: number;
@@ -20,7 +22,7 @@ export interface Pricing {
 }
 
 export interface TierData {
-  [key: string]: any; // Add index signature
+  [key: string]: string | number | undefined;
   free?: string;
   "tier-1"?: string;
   "tier-2"?: string;
@@ -40,6 +42,46 @@ interface ModelTableProps {
 }
 
 const ModelTable: FC<ModelTableProps> = ({ data }) => {
+	const [sortColumn, setSortColumn] = useState<keyof Model | null>(null);
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+	const [modelTypeFilter, setModelTypeFilter] = useState<string>("");
+	const [freeFilter, setFreeFilter] = useState<boolean>(false);
+
+  const handleSort = (column: keyof Model) => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortColumn(column);
+      setSortDirection("asc");
+    }
+  };
+
+  const filteredData = data.filter((model) => {
+    if (modelTypeFilter && model.modelType !== modelTypeFilter) {
+      return false;
+    }
+    if (freeFilter && !model.tiersData?.free) {
+      return false;
+    }
+    return true;
+  });
+
+  const sortedData = React.useMemo(() => {
+    if (sortColumn === null) return filteredData;
+
+    return [...filteredData].sort((a, b) => {
+      const valueA = a[sortColumn];
+      const valueB = b[sortColumn];
+
+      if (valueA === null || valueA === undefined) return 1;
+      if (valueB === null || valueB === undefined) return -1;
+
+      if (valueA < valueB) return sortDirection === "asc" ? -1 : 1;
+      if (valueA > valueB) return sortDirection === "asc" ? 1 : -1;
+      return 0;
+    });
+  }, [filteredData, sortColumn, sortDirection]);
+
   if (!data)
     return (
       <ErrorLog errorMessage={"Error loading models. Fetch incident..."} />
@@ -47,12 +89,47 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
 
   return (
     <Card className="h-full overflow-auto scrollbar-thin scrollbar-thumb-[#262626] scrollbar-track-transparent">
+      <div className="m-4 flex items-center space-x-4">
+        <ToggleGroup
+          type="single"
+          value={modelTypeFilter}
+          onValueChange={(value) => setModelTypeFilter(value)}
+          className="flex space-x-2"
+        >
+          <ToggleGroupItem variant="outline" value="Text">Text</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Image">Image</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Embedding">Embedding</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Moderation">Moderation</ToggleGroupItem>
+          <ToggleGroupItem variant="outline" value="Audio">Audio</ToggleGroupItem>
+        </ToggleGroup>
+        <ToggleGroup
+          type="single"
+          variant="outline"
+          value={freeFilter ? "free" : ""}
+          onValueChange={(value) => setFreeFilter(value === "free")}
+          className="flex space-x-2"
+        >
+          <ToggleGroupItem value="free">Free Limit</ToggleGroupItem>
+        </ToggleGroup>
+      
+</div>
       <Table>
         <TableHeader>
           <TableRow>
-            {/* Table header could be its own component, but kept for brevity */}
-            <TableHead className="w-[100px]">ID</TableHead>
-            <TableHead>Type</TableHead>
+            <TableHead
+              className="w-[100px] cursor-pointer"
+              onClick={() => handleSort("id")}
+            >
+              ID {sortColumn === "id" && (sortDirection === "asc" ? "▲" : "▼")}
+            </TableHead>
+            <TableHead
+              className="cursor-pointer"
+              onClick={() => handleSort("modelType")}
+            >
+              Type{" "}
+              {sortColumn === "modelType" &&
+                (sortDirection === "asc" ? "▲" : "▼")}
+            </TableHead>
             <TableHead>Cost</TableHead>
             <TableHead>Free Limit</TableHead>
             <TableHead className="text-blue-500">Tier-1 Limit</TableHead>
@@ -62,7 +139,7 @@ const ModelTable: FC<ModelTableProps> = ({ data }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((item) =>
+          {sortedData.map((item) =>
             item.points_to ? null : <ModelRow key={item.id} model={item} />,
           )}
         </TableBody>

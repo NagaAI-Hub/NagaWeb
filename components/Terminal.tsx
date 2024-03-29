@@ -1,5 +1,5 @@
 const TerminalAnimation: React.FC = () => {
-  const text = `
+	const text = `
   ⠀     ⢀⣠⣤⣶⣶⣿⣿⣿⣿⣿⣷⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⣀⣤⣶⣶⡿⠿⢿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠋⠉⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣷⣄⠀⠀⠀⠀⠀
 ⠀⠀⠀⣠⣾⣿⣿⣿⣿⠿⠛⠉⠁⠀⠀⠀⠀⠉⠙⠻⢿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣶⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣷⣄⠀⠀⠀
@@ -18,15 +18,15 @@ const TerminalAnimation: React.FC = () => {
 Expect The Serpent. Expect The Naga. Expect The Unexpected.
 `;
 
-  return (
-    <div className="text-white py-4 font-mono">
-      <div className="ResponsiveFont">
-        <div className="GradientText">
-          <pre>{text}</pre>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="text-white py-4 font-mono">
+			<div className="ResponsiveFont">
+				<div className="GradientText">
+					<pre>{text}</pre>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default TerminalAnimation;

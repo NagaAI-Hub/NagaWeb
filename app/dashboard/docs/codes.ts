@@ -1,7 +1,7 @@
 export const pythonCodes = {
-  0: {
-    title: "Simple Chat Completions",
-    code: `
+	0: {
+		title: "Simple Chat Completions",
+		code: `
     import os
     from openai import OpenAI
     
@@ -19,10 +19,10 @@ export const pythonCodes = {
         ],
         model="gpt-3.5-turbo",
     )`,
-  },
-  1: {
-    title: "Simple Embedding Generation",
-    code: `
+	},
+	1: {
+		title: "Simple Embedding Generation",
+		code: `
         from openai import OpenAI
         client = OpenAI()
         
@@ -32,10 +32,10 @@ export const pythonCodes = {
         
         df['ada_embedding'] = df.combined.apply(lambda x: get_embedding(x, model='text-embedding-ada-002'))
         df.to_csv('output/embedded_1k_reviews.csv', index=False)`,
-  },
-  2: {
-    title: "Simple Image Generation",
-    code: `
+	},
+	2: {
+		title: "Simple Image Generation",
+		code: `
         from openai import OpenAI
         
         client = OpenAI()
@@ -49,10 +49,10 @@ export const pythonCodes = {
         )
         
         image_url = response.data[0].url`,
-  },
-  3: {
-    title: "Simple Vision Generation",
-    code: `
+	},
+	3: {
+		title: "Simple Vision Generation",
+		code: `
         from openai import OpenAI
 
         client = OpenAI()
@@ -77,10 +77,10 @@ export const pythonCodes = {
         )
         
         print(response.choices[0])`,
-  },
-  4: {
-    title: "Simple TTS Generation",
-    code: `
+	},
+	4: {
+		title: "Simple TTS Generation",
+		code: `
         from pathlib import Path
         from openai import OpenAI
 
@@ -94,13 +94,13 @@ export const pythonCodes = {
         )
         
         response.stream_to_file(speech_file_path)`,
-  },
+	},
 };
 
 export const javascriptCodes = {
-  0: {
-    title: "Simple Chat Completions",
-    code: `
+	0: {
+		title: "Simple Chat Completions",
+		code: `
     import OpenAI from "openai";
     const openai = new OpenAI();
     
@@ -116,10 +116,10 @@ export const javascriptCodes = {
       console.log(completion.choices[0]);
     }
     main();`,
-  },
-  1: {
-    title: "Simple Image Generation",
-    code: `
+	},
+	1: {
+		title: "Simple Image Generation",
+		code: `
         import OpenAI from "openai";
         const openai = new OpenAI();
 
@@ -130,10 +130,10 @@ export const javascriptCodes = {
             size: "1024x1024",
           });
           image_url = response.data.data[0].url;`,
-  },
-  2: {
-    title: "Simple Vision Generation",
-    code: `
+	},
+	2: {
+		title: "Simple Vision Generation",
+		code: `
         import OpenAI from "openai";
         const openai = new OpenAI();
         
@@ -164,10 +164,10 @@ export const javascriptCodes = {
           console.log(response.choices[0]);
         }
         main();`,
-  },
-  3: {
-    title: "Simple TTS Generation",
-    code: `
+	},
+	3: {
+		title: "Simple TTS Generation",
+		code: `
         import fs from "fs";
         import path from "path";
         import OpenAI from "openai";
@@ -187,5 +187,5 @@ export const javascriptCodes = {
           await fs.promises.writeFile(speechFile, buffer);
         }
         main();`,
-  },
+	},
 };
