@@ -1,5 +1,6 @@
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 // ModelTable.tsx
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import ErrorLog from "../Err";
 import { Card } from "../ui/card";
 import {
@@ -10,7 +11,6 @@ import {
 	TableRow,
 } from "../ui/table";
 import ModelRow from "./ModelRow";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export interface Pricing {
 	per_input_token?: number;
