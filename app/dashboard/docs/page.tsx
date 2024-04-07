@@ -93,7 +93,7 @@ const LeveragingOfficialPackages = () => (
 			Leveraging Official OpenAI Packages
 		</h3>
 		<p className="text-muted-foreground">
-			he official OpenAI packages available on PyPI utilize PATH variables such
+			The official OpenAI packages available on PyPI utilize PATH variables such
 			as{" "}
 		</p>
 		<div className="my-4 bg-neutral-900 p-4 rounded-xl">
@@ -181,11 +181,15 @@ const ResourceLinks = ({ links }: ResourceLinksProps) => (
 		</p>
 		<ul className="text-muted-foreground">
 			<div className="my-4 bg-neutral-900 p-4 rounded-xl">
-				{OAI_PATH_VARS.map((v) => (
-					<div key={v}>
-						<span className="text-rose-500">{v}</span>
-					</div>
-				))}
+				{links
+					.sort((a, b) => a.length - b.length)
+					.map((link: string) => (
+						<li key={link}>
+							<Link href={link}>
+								<p className="text-rose-500">{link}</p>
+							</Link>
+						</li>
+					))}
 			</div>
 		</ul>
 	</>
