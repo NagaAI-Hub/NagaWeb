@@ -2,7 +2,7 @@ export const Core = {
 	// Service Name
 	name: "NagaAI",
 	// Service Version
-	version: "3.7.0 27032024",
+	version: "3.7.0 07042024",
 	// Service Title
 	title: "NagaAI - Cutting-Edge AI Solutions for Developers & Businesses",
 	// Service Description
@@ -17,7 +17,7 @@ export const Endpoints = {
 	NAGA_BASE_URL: BASE_URL,
 	NAGA_MODEL_LIST: `${BASE_URL}models`,
 	NAGA_DEFAULT_LIMITS: `${BASE_URL}limits`,
-	NAGA_API_DOCS: `${BASE_URL}docs`,
+	NAGA_API_DOCS: "https://api.naga.ac/docs",
 	NAGA_CHAT_COMPLETIONS: `${BASE_URL}chat/completions`,
 	NAGA_EMBEDDINGS: `${BASE_URL}embeddings`,
 	NAGA_TOKENIZER: `${BASE_URL}chat/tokenizer`,

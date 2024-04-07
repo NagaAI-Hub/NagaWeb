@@ -9,13 +9,20 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { javascriptCodes, pythonCodes } from "./codes";
 
+interface HighlighterComponentProps {
+	children: React.ReactNode;
+	language: string;
+}
 const SyntaxHighlighter = dynamic(
 	async () => {
 		const { Prism } = await import("react-syntax-highlighter");
 		const { atomDark } = await import(
 			"react-syntax-highlighter/dist/esm/styles/prism"
 		);
-		const HighlighterComponent = ({ children, language }: any) => (
+		const HighlighterComponent = ({
+			children,
+			language,
+		}: HighlighterComponentProps) => (
 			/* @ts-ignore */
 			<Prism language={language} style={atomDark}>
 				{children}
@@ -90,8 +97,8 @@ const LeveragingOfficialPackages = () => (
 			as{" "}
 		</p>
 		<div className="my-4 bg-neutral-900 p-4 rounded-xl">
-			{OAI_PATH_VARS.map((v, i) => (
-				<div key={i}>
+			{OAI_PATH_VARS.map((v) => (
+				<div key={v}>
 					<span className="text-rose-500">{v}</span>
 				</div>
 			))}
@@ -173,15 +180,13 @@ const ResourceLinks = ({ links }: ResourceLinksProps) => (
 			resources:
 		</p>
 		<ul className="text-muted-foreground">
-			{links
-				.sort((a, b) => a.length - b.length)
-				.map((link: string, i: number) => (
-					<li key={i}>
-						<Link href={link}>
-							<p className="text-rose-500">{link}</p>
-						</Link>
-					</li>
+			<div className="my-4 bg-neutral-900 p-4 rounded-xl">
+				{OAI_PATH_VARS.map((v) => (
+					<div key={v}>
+						<span className="text-rose-500">{v}</span>
+					</div>
 				))}
+			</div>
 		</ul>
 	</>
 );
