@@ -32,6 +32,16 @@ const textModels = [
 	"claude-instant",
 	"gemini-pro",
 	"gemini-pro-vision",
+	"gpt-4-turbo-2024-04-09",
+	"gpt-4-1106-vision-preview",
+	"gemini-1.5-pro-latest",
+	"llama-3-70b-instruct",
+	"llama-3-8b-instruct",
+	"mixtral-8x22b-instruct",
+	"command-r-plus",
+	"command-r",
+	"mixtral-8x7b-instruct",
+	"mistral-7b-instruct",
 ];
 const imageModels = [
 	"midjourney",
@@ -47,6 +57,8 @@ const imageModels = [
 	"stable-diffusion-1.5",
 	"deepfloyd-if",
 	"material-diffusion",
+	"stable-diffusion-3",
+	"kandinsky-3.1",
 ];
 const audioModels = [
 	"whisper-1",
@@ -55,6 +67,7 @@ const audioModels = [
 	"whisper-large-v3",
 	"xtts-v2",
 	"bark",
+	"whisper-large",
 ];
 const embeddingModels = [
 	"text-embedding-ada-002",
